@@ -1,0 +1,107 @@
+{% load static %}
+{% load index %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+</head>
+<body>
+  <div>
+    <h1>Single applet + API</h1>
+    <p>
+      This is an example of an HTML file containing a GeoGebra applet with
+      buttons triggering the GeoGebra Javascript API.
+    </p>
+
+    <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+    <script type="text/javascript">
+      var parameters = {"prerelease":false,"width":1000,"height":450,"showToolBar":false,"borderColor":null,"showMenuBar":false,"showAlgebraInput":true,
+				"showResetIcon":true,"enableLabelDrags":false,"enableShiftDragZoom":true,"enableRightClick":false,"capturingThreshold":null,"showToolBarHelp":false,
+				"errorDialogsActive":true,"useBrowserForJS":false, "filename":"{% static 'geogebra-export.ggb' %}"};
+
+      var applet = new GGBApplet("5.0", parameters);
+
+      //when used with Math Apps Bundle, uncomment this:
+      //applet.setHTML5Codebase('GeoGebra/HTML5/5.0/webSimple/');
+
+      window.onload = function () {
+        applet.inject("applet_container");
+      };
+      
+    </script>
+
+    <div id="applet_container"></div>
+
+    <script type="text/javascript">
+      function evalInput(strInput) {
+        ggbApplet.evalCommand(strInput);
+        return false;
+      }
+    </script>
+    <!--onsubmit="evalInput(inputField.value);inputField.value='';return false;"-->
+    <br>
+    <form action="" method="POST">
+      {% csrf_token %}
+      Input function: <input type="text" name="inputField" size="30"/>
+      <br>
+      Input point A: <input type="number" name="puntoA">
+      <br>
+      Input point B: <input type="number" name="puntoB">
+      <br>
+      Input method:
+      <select name="method" id="">
+        <option value="biseccion">Método Biseccion</option>
+        <option value="falsaPosicion">Método Falsa Posición</option>
+      </select>
+      <input type="submit" value="submit">
+    </form>
+    <dir>
+      <p>Resultado</p>
+      <table>
+        <tr>
+          <th>xi</th>
+          <th>xd</th>
+          <th>xr</th>
+          <th>f(xi)</th>
+          <th>f(xd)</th>
+          <th>f(xr)</th>
+          <th>ERROR</th>
+        </tr>
+        {% for i in count %}
+        <tr>
+          <td>{{ xi|index:i }}</td>
+          <td>{{ xd|index:i }}</td>
+          <td>{{ xr|index:i }}</td>
+          <td>{{ fxi|index:i }}</td>
+          <td>{{ fxd|index:i }}</td>
+          <td>{{ fxr|index:i }}</td>
+          <td>{{ err|index:i }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </dir>
+  </div>
+</body>
+
+</html>
