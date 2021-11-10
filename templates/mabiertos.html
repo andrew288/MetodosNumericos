@@ -1,0 +1,97 @@
+{% load static %}
+{% load index %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+      
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      </style>
+</head>
+
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        Input function: <input type="text" name="inputField" size="30"/>
+        <br>
+        Input point A: <input type="number" step="any" name="puntoA">
+        <br>
+        Input method:
+        <select name="method" id="">
+          <option value="puntoFijo">Método Punto Fijo</option>
+          <option value="newtonRaphson">Método Newton Raphson</option>
+          <option value="secante">Método Secante</option>
+        </select>
+        <input type="submit" value="submit">
+      </form>
+     
+    {% if metodo == 'newtonRaphson' %}  
+      <dir>
+        <p>Resultado</p>
+        <table>
+          <tr>
+            <th>xn</th>
+            <th>fxn</th>
+            <th>dfxn</th>
+            <th>xr</th>
+            <th>ERROR</th>
+          </tr>
+          {% for i in count %}
+          <tr>
+            <td>{{ xn|index:i }}</td>
+            <td>{{ fxn|index:i }}</td>
+            <td>{{ dfxn|index:i }}</td>
+            <td>{{ xr|index:i }}</td>
+            <td>{{ err|index:i }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </dir>
+      {% endif%}
+
+      {% if metodo == 'secante' %}  
+      <dir>
+        <p>Resultado</p>
+        <table>
+          <tr>
+            <th>xi</th>
+            <th>xi-1</th>
+            <th>fxi</th>
+            <th>fxi-1</th>
+            <th>xr</th>
+            <th>ERROR</th>
+          </tr>
+          {% for i in count %}
+          <tr>
+            <td>{{ xi|index:i }}</td>
+            <td>{{ xi_1|index:i }}</td>
+            <td>{{ fxi|index:i }}</td>
+            <td>{{ fxi_1|index:i }}</td>
+            <td>{{ xr|index:i }}</td>
+            <td>{{ err|index:i }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+      </dir>
+      {% endif%}
+</body>
+</html>
