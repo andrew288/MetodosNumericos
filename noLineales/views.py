@@ -214,3 +214,6 @@ def home_view(request):
         
     return render(request, 'home_view.html', context=context)
 
+def index(request):
+    context={}
+    return render(request,'index.html',context={})
