@@ -1,0 +1,57 @@
+input{
+   border:none;
+   border-radius: 5px;
+   height: 30px;
+   margin:10px;
+   width: 200px;
+   font-size:1.3rem;
+}
+.box-input{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin:30px;
+    
+}
+.input{
+    margin:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.intervalo{
+    width: 40px;
+}
+.boton{
+    border:none;
+    height: 56px;
+    font-size:1.8rem;
+    padding:10px;
+    text-align: center;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #EEEA7E;
+}
+.boton:hover,.botton:visited{
+    border:1px solid black;
+}
+/* GRAfica y tabla */
+.grafica{
+    background-color: rgb(85, 11, 255);
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display:none;
+}
+.tabla{
+    background-color: rgb(255, 72, 0);
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    display:none;
+}
+.grafica:checked .grafica{
+    display:block;
+}

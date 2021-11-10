@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="biseccion.css">
+
+    <title>Bisección</title>
+</head>
+<body>
+    <h1>Método de bisección</h1>
+    <form action="/biseccion" method="POST">
+      <div class="box-input">
+        <div class="input">
+          <label>Función f(x): </label><input value="" id="funcionF" type="text" name="inputField" size="30"/>
+        </div>
+        <div class="input">
+          <label>Intervalo:[</label><input class="intervalo" id="puntoA" type="number" name="puntoA" step="any">,<input class="intervalo" id="puntoB" type="number" name="puntoB" step="any">]
+        </div>
+        <div class="input">
+          <label>Error:</label><input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+        </div>
+      </div>
+      <div class="box-botones">
+          <div class="boton" >Mostrar Grafico</div>
+          <div class="boton"></div>
+      </div>
+      <div class="info">
+        <div class="grafica" id="grafica">
+
+        </div>
+        <div class="tabla" id="tabla">
+
+        </div>
+      </div>
+      </form>
+      <script src="script.js" ></script>
+</body>
+</html>

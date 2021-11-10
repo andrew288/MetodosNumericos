@@ -214,6 +214,18 @@ def home_view(request):
         
     return render(request, 'home_view.html', context=context)
 
+def biseccion(request):
+    context ={}
+
+    if request.POST:
+        #request
+        funcionF = request.POST["inputField"]
+        puntoA =  request.POST["puntoA"]
+        puntoB = request.POST.get("puntoB",False)
+        error = request.POST["error"]
+        truncate = 0
+        context = metodo_biseccion(funcionF, puntoA, puntoB, error, truncate)  
+    return render(request, 'biseccion.html', context=context)
 
 def index(request):
     context={}
