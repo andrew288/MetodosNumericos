@@ -32,7 +32,7 @@ input{
      border-radius: 10px;
      background-color: #EEEA7E;
  }
- .boton:hover,.botton:{
+ .boton:hover{
      border:1px solid black;
  }
  /* GRAfica y tabla */
