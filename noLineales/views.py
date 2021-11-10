@@ -4,7 +4,7 @@ from sympy import *
 
 #Metodos cerrados
 
-def metodo_posicion_falsa(express,puntoA,puntoB):
+def metodo_posicion_falsa(express,puntoA,puntoB, errorEstimado, truncate):
     print("Metodo Falsa Posicion")
     #declaracion de variables
     x = symbols('x')
@@ -20,10 +20,12 @@ def metodo_posicion_falsa(express,puntoA,puntoB):
     fxr = []
     err = []
     error = 0
+    
     #parse funcion ingresada
     str_expr = express
     expr= sympify(str_expr, evaluate=False)
     f = lambdify(x,expr)
+
     #asignacion de puntos iniciales
     xi.append(float(puntoA))
     xd.append(float(puntoB))
@@ -44,7 +46,7 @@ def metodo_posicion_falsa(express,puntoA,puntoB):
         if(count>0):
             error = abs((xr[count]-xr[count-1])/xr[count])
             err.append(error)
-            if(error == 0):
+            if(error == 0 or error <= float(errorEstimado)):
                 itr = count + 1
                 count = 100
         else:
@@ -54,7 +56,10 @@ def metodo_posicion_falsa(express,puntoA,puntoB):
 
     #pasamos nuestros valores
     context = {
+        "metodo":"posicionFalsa",
         "count":range(itr),
+        "nCate":range(7),
+        "cate":["xi","xd","xr","f(xi)","f(xd)","f(xr)","Error"],
         "xi":xi,
         "xd":xd,
         "xr":xr,
@@ -63,10 +68,11 @@ def metodo_posicion_falsa(express,puntoA,puntoB):
         "fxr":fxr,
         "err":err,
     }
+    print(context)
 
     return context
 
-def metodo_biseccion(express,puntoA,puntoB):
+def metodo_biseccion(express,puntoA,puntoB, errorEstimado, truncate):
     print("Metodo Biseccion")
     x = symbols('x')
     str_expr = ""
@@ -113,7 +119,10 @@ def metodo_biseccion(express,puntoA,puntoB):
         count=count+1
 
     context = {
+        "metodo":"biseccion",
         "count":range(itr),
+        "nCate":range(7),
+        "cate":["xi","xd","xr","f(xi)","f(xd)","f(xr)","Error"],
         "xi":xi,
         "xd":xd,
         "xr":xr,
@@ -124,7 +133,62 @@ def metodo_biseccion(express,puntoA,puntoB):
     }
 
     return context
+
+def metodo_puntoFijo(express, funcionG, puntoA, errorEstimado, truncate):
+    print("Metodo Punto Fijo")
+    x = symbols('x')
+    count = 0
+    itr = 0
+    xi = []
+    gx = []
+    fx = []
+    err = []
+    error = 0
+    str_exprF = express
+    exprF = sympify(str_exprF, evaluate=False)
+    print(exprF)
+    exprG = sympify(funcionG, evaluate=False)
+    print(exprG)
+    #funciones
+    f = lambdify(x,exprF)
+    g = lambdify(x,exprG)
+
+    xi.append(float(puntoA))
+    while(count < 100):
+        gx.append(g(xi[count]))
+        fx.append(abs(f(xi[count])))
+
+        if(count > 0):
+                error = abs((xi[count]-xi[count-1])/xi[count])
+                err.append(error)
+        else:
+            err.append(100)
+
+        if(fx[count] > float(errorEstimado)):
+            xi.append(gx[count])
+
+            count = count + 1
+        
+        else:
+            itr = count + 1
+            count = 100
     
+    context = {
+        "metodo":"puntoFijo",
+        "count":range(itr),
+        "nCate":range(4),
+        "cate":["xi","|f(x)|","g(x)","Error"],
+        "xi":xi,
+        "fx":fx,
+        "gx":gx,
+        "err":err,
+    }
+    print("xi: ",xi)
+    print("g(x): ",gx)
+    print("f(x): ",fx)
+    print("Err: ", err)
+
+    return context
 
 def home_view(request):
 
@@ -134,14 +198,19 @@ def home_view(request):
 
         #request
         metodo = request.POST["method"]
-        funcion = request.POST["inputField"]
+        funcionF = request.POST["inputField"]
+        funcionG = request.POST.get("funcionG",False)
         puntoA =  request.POST["puntoA"]
-        puntoB = request.POST["puntoB"]
+        puntoB = request.POST.get("puntoB",False)
+        error = request.POST["error"]
+        truncate = request.POST["truncate"]
 
         if metodo == "biseccion":
-            context = metodo_biseccion(funcion, puntoA, puntoB)
+            context = metodo_biseccion(funcionF, puntoA, puntoB, error, truncate)
         if metodo == "falsaPosicion":
-            context =  metodo_posicion_falsa(funcion, puntoA, puntoB)
+            context =  metodo_posicion_falsa(funcionF, puntoA, puntoB, error, truncate)
+        if metodo == "puntoFijo":
+            context = metodo_puntoFijo(funcionF, funcionG, puntoA, error, truncate)
         
     return render(request, 'home_view.html', context=context)
 
