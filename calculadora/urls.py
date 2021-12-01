@@ -24,4 +24,6 @@ urlpatterns = [
     path('',index, name="/"),
     path('admin/', admin.site.urls),
     path('Ecuaciones-no-lineales/', include('noLineales.urls')),
+    path('Ecuaciones-algebraicas/', include('algebraicas.urls')),
+    path('Ajuste-interpolacion/', include('curvas.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
