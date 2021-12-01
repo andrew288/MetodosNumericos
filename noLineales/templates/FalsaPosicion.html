@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+
+{% block title %}
+  Método FalsaPosicion
+{% endblock %}
+{%block body%}
+<div>
+    <div id="applet_container"></div>
+
+    <form action="/Ecuaciones-no-lineales/Falsa-Posicion" method="POST">
+      {% csrf_token %}
+      <div>
+        Input function f(x): <input value="" id="funcionF" type="text" name="inputField" size="30"/>
+        <button onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>
+      </div>
+
+      <div>
+        Intervalo:[<input id="puntoA" type="number" name="puntoA" step="any">,<input id="puntoB" type="number" name="puntoB" step="any">]
+      </div>
+
+      <div>
+        Input ERROR:
+        <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+      </div>
+
+      <input type="submit" value="submit">
+    </form>
+
+    <div>
+      <p>Resultado</p>
+      <table class="table table-striped">
+        <thead class="table-dark">
+          {% for i in nCate %}
+          <th>{{ cate|index:i }}</th>
+          {% endfor %}
+        </thead>
+          {% for i in count %}
+          <tr>
+            <td>{{ xi|index:i }}</td>
+            <td>{{ xd|index:i }}</td>
+            <td>{{ xr|index:i }}</td>
+            <td>{{ fxi|index:i }}</td>
+            <td>{{ fxd|index:i }}</td>
+            <td>{{ fxr|index:i }}</td>
+            <td>{{ err|index:i }}</td>
+          </tr>
+          {% endfor %}
+
+      </table>
+    </div>
+  </div>
+  <script src="{% static 'js/index.js' %}"></script>
+  <script type="text/javascript">
+    function evalInput(strInput) {
+      ggbApplet.evalCommand(strInput);
+      return false;
+    }
+  </script>
+{% endblock %}
