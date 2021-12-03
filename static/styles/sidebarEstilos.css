@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #EAEBEF;
+    font-family: 'Poppins', sans-serif;
+}
+.sidebar__boton{
+    margin: 0px 80px;
+    padding: 20px 0;
+    display: flex;
+    gap: 1em;
+}
+.rayasFuera{
+    margin: 20px 30px;
+    position: fixed;
+    z-index: 1;
+    height: 29px;
+    width: 37px;
+}
+.rayas{
+    z-index: 2;
+}
+.retroceder{
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+}
+.nav{
+    border-radius: 0 16px 16px 0;
+    width: 300px;
+    background: rgba(76, 201, 163, 0.94);
+    height: 100vh;
+    transition: all 500ms ease;
+    position: fixed;
+}
+.nav__link{
+    color: #303440;
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    text-align: left;
+}
+.list__item:hover{
+    background: rgba(74, 178, 147, 1);
+}
+.nav__link--inside{
+    padding-left: 55px;
+    border-left: 7px solid transparent;
+}
+
+.nav__link--inside:hover{
+    background: rgba(59, 146, 120, 1);
+    border-left: 7px solid #303440;
+}
+
+.list{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.list__item{
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.list__item--click{
+    cursor: pointer;
+}
+
+.list__button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.arrow .list__arrow{
+    transform: rotate(90deg);
+}
+
+.list__arrow{
+    margin-left: auto;
+    transition: transform .3s;
+}
+
+.list__show{
+    margin-left: auto;
+    list-style: none;
+    transition: height .4s;
+    height: 0;
+}
+
+

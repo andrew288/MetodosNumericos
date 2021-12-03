@@ -13,6 +13,7 @@
 </head>
 
 {%block body%}
+  <div class="cuerpo">
     <h1>Método de bisección</h1>
     <form action="/Ecuaciones-no-lineales/Biseccion" method="POST">    {% csrf_token %}
       <div class="box-input">
@@ -60,7 +61,8 @@
           </div>
         </div>
       </div>
-      </form>
+    </form>
+  </div>
       <script src="{% static 'js/index.js' %}"></script>
       <script src="{% static 'js/method.js' %}"></script>
       <script type="text/javascript">
