@@ -13,11 +13,7 @@ input{
      margin:30px;
      
  }
- .cuerpo{
-     text-align: center;
-     font-family: 'Sansation_Light';
-     font-size:1.8rem
- }
+
  .input{
      margin:20px;
      display: flex;
