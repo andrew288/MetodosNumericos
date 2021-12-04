@@ -2,72 +2,81 @@
 {% load static %}
 
 {% load index %}
-
+{% block estilos%}
+  <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+{% endblock %}
 {% block title %}
   Método Punto Fijo
 {% endblock %}
 {%block body%}
-<div>
-    <div id="applet_container"></div>
-    <br>
+  <div class="cuerpo">
+    <h1>Iteración Punto fijo</h1>
     <form action="/Ecuaciones-no-lineales/Punto-Fijo" method="POST">
       {% csrf_token %}
+      <div class="box-input">
+        <div class="input">
+          <label>Función f(x):</label> <input value="" id="funcionF" type="text" name="inputField" size="30"/>
+          
+        </div>
 
-      <div>
-        Input function f(x): <input value="" id="funcionF" type="text" name="inputField" size="30"/>
-        <button onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>
-      </div>
+        <div class="input">
+          <label>Función g(x):</label> <input value="" id="funcionG" type="text" name="funcionG" size="30"/>
+        </div>
 
-      <div>
-        Input function g(x): <input value="" id="funcionG" type="text" name="funcionG" size="30"/>
-        <button onclick="evalInput(document.getElementById('funcionG').value);return false;">Mostrar Grafico</button>
-      </div>
+        <div class="input">
+          <label>Punto inicial:</label><input id="puntoA" type="number" name="puntoA" step="any">
+        </div>
 
-      <div>
-        Intervalo:[<input id="puntoA" type="number" name="puntoA" step="any">]
+        <div class="input">
+          <label>Input ERROR:</label>
+          <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+        </div>
+        <div class="input">
+          Input truncate:
+          <input name="truncate" type="number" max="5" min="1">
+        </div>
       </div>
-
-      <div>
-        Input ERROR:
-        <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+      <div class="box-botones">
+        <input  class="boton" type="submit" value="submit">
+        <button class="boton" onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Gráfica F(X)</button>
+        <button class="boton" onclick="evalInput(document.getElementById('funcionG').value);return false;">Mostrar Gráfica G(X)</button>
       </div>
-
-      <div>
-        Input truncate:
-        <input name="truncate" type="number" max="5" min="1">
+      <div class="info">
+        <div class="grafica" id="grafica">
+          <div id="applet_container"></div>
+        </div>
+        <div class="tabla" id="tabla">   
+          <div>
+            <table class="table table-striped">
+              <thead class="table-dark">
+                {% for i in nCate %}
+                <th>{{ cate|index:i }}</th>
+                {% endfor %}
+              </thead>
+                {% for i in count %}
+                <tr>
+                  <td>{{ xi|index:i }}</td>
+                  <td>{{ fx|index:i }}</td>
+                  <td>{{ gx|index:i }}</td>
+                  <td>{{ err|index:i }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+          </div>
+        </div>
       </div>
-      <br>
-      <input type="submit" value="submit">
     </form>
-
-    <div>
-      <p>Resultado</p>
-      <table class="table table-striped">
-        <thead class="table-dark">
-          {% for i in nCate %}
-          <th>{{ cate|index:i }}</th>
-          {% endfor %}
-        </thead>
-
-
-        {% if metodo == "puntoFijo" %}
-          {% for i in count %}
-          <tr>
-            <td>{{ xi|index:i }}</td>
-            <td>{{ fx|index:i }}</td>
-            <td>{{ gx|index:i }}</td>
-            <td>{{ err|index:i }}</td>
-          </tr>
-          {% endfor %}
-        {% endif %}
-      </table>
-    </div>
   </div>
   <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/method.js' %}"></script>
   <script type="text/javascript">
     function evalInput(strInput) {
+      tabla=document.getElementById("tabla")  
+      grafica =document.getElementById("grafica")
+      grafica.style.display="flex";
+      tabla.style.display="none";
       ggbApplet.evalCommand(strInput);
-      return false;
+      return false; 
     }
   </script>
 

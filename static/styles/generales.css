@@ -3,3 +3,28 @@
     font-family: 'Sansation_Light';
     font-size: 1.8rem
 }
+body{
+    /*text-align:center;*/
+    /*font-size:1.8rem;*/
+    background-color:#16A67B;
+}
+h1{
+    padding:40px;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

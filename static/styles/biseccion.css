@@ -29,9 +29,10 @@ input{
      font-size:1.8rem;
      padding:10px;
      text-align: center;
-     width: 250px;
+     min-width: 250px;
      border-radius: 10px;
      background-color: #EEEA7E;
+     margin:10px;
  }
  .boton:hover{
      border:1px solid black;
@@ -39,7 +40,8 @@ input{
  /* GRAfica y tabla */
 .grafica{
      display:none;
-
+    margin: 30px;
+    min-width: 320px;
  }
  .tabla{
      display:flex;

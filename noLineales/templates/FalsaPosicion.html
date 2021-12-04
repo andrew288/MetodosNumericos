@@ -2,58 +2,74 @@
 {% load static %}
 {% load index %}
 
-{% block title %}
-  Método Falsa Posición
-{% endblock %}
+  {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+  {% endblock %}
+
+  {% block title %}
+    Método Falsa Posición
+  {% endblock %}
 {%block body%}
 <div class="cuerpo">
-    <div id="applet_container"></div>
+    <h1>Método Falsa posición</h1>
+    <form action="/Ecuaciones-no-lineales/Falsa-Posicion" method="POST"> {% csrf_token %}
+      <div class="box-input">
+        <div class="input">
+          <label>Input function f(x):</label> <input value="" id="funcionF" type="text" name="inputField" size="30"/> 
+        </div>
+        <div class="input">
+          <label>Intervalo:[</label><input class="intervalo" id="puntoA" type="number" name="puntoA" step="any">,<input class="intervalo" id="puntoB" type="number" name="puntoB" step="any">]
+        </div>
 
-    <form action="/Ecuaciones-no-lineales/Falsa-Posicion" method="POST">
-      {% csrf_token %}
-      <div>
-        Input function f(x): <input value="" id="funcionF" type="text" name="inputField" size="30"/>
-        <button onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>
+        <div class="input">
+          <label>Input ERROR:</label>
+          <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+        </div>
       </div>
-
-      <div>
-        Intervalo:[<input id="puntoA" type="number" name="puntoA" step="any">,<input id="puntoB" type="number" name="puntoB" step="any">]
+      <div class="box-botones">
+        <button class="boton" onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>
+        <input class="boton" type="submit" value="mostrarTabla">        
       </div>
-
-      <div>
-        Input ERROR:
-        <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+      <div class="info">
+        <div class="grafica" id="grafica">
+            <div id="applet_container" ></div>
+            <br>
+        </div>
+        <div class="tabla" id="tabla">  
+          <div>
+            <table class="table table-striped">
+              <thead class="table-dark">
+                {% for i in nCate %}
+                <th>{{ cate|index:i }}</th>
+                {% endfor %}
+              </thead>
+                {% for i in count %}
+                <tr>
+                  <td>{{ xi|index:i }}</td>
+                  <td>{{ xd|index:i }}</td>
+                  <td>{{ xr|index:i }}</td>
+                  <td>{{ fxi|index:i }}</td>
+                  <td>{{ fxd|index:i }}</td>
+                  <td>{{ fxr|index:i }}</td>
+                  <td>{{ err|index:i }}</td>
+                </tr>
+                {% endfor %}
+      
+            </table>
+          </div>  
+        </diV>
       </div>
-
-      <input type="submit" value="submit">
     </form>
-
-    <div>
-      <p>Resultado</p>
-      <table class="table table-striped">
-        <thead class="table-dark">
-          {% for i in nCate %}
-          <th>{{ cate|index:i }}</th>
-          {% endfor %}
-        </thead>
-          {% for i in count %}
-          <tr>
-            <td>{{ xi|index:i }}</td>
-            <td>{{ xd|index:i }}</td>
-            <td>{{ xr|index:i }}</td>
-            <td>{{ fxi|index:i }}</td>
-            <td>{{ fxd|index:i }}</td>
-            <td>{{ fxr|index:i }}</td>
-            <td>{{ err|index:i }}</td>
-          </tr>
-          {% endfor %}
-
-      </table>
-    </div>
+ 
   </div>
   <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/method.js' %}"></script>
   <script type="text/javascript">
     function evalInput(strInput) {
+      tabla=document.getElementById("tabla")  
+      grafica =document.getElementById("grafica")
+      grafica.style.display="flex";
+      tabla.style.display="none";
       ggbApplet.evalCommand(strInput);
       return false;
     }

@@ -6,10 +6,6 @@
     box-sizing: border-box;
 }
 
-body{
-    background: #EAEBEF;
-    font-family: 'Poppins', sans-serif;
-}
 .sidebar__boton{
     margin: 0px 80px;
     padding: 20px 0;
@@ -22,6 +18,7 @@ body{
     z-index: 1;
     height: 29px;
     width: 37px;
+    z-index: 9999;
 }
 .rayas{
     z-index: 2;
@@ -38,6 +35,7 @@ body{
     height: 100vh;
     transition: all 500ms ease;
     position: fixed;
+    z-index: 999;
 }
 .nav__link{
     color: #303440;

@@ -2,57 +2,69 @@
 {% load static %}
 
 {% load index %}
-
+{% block estilos%}
+  <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+{% endblock %}
 {% block title %}
-  Método newton Rapshon
+  Newton Rapshon
 {% endblock %}
 
 {%block body%}
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
+  <div class ="cuerpo">
+    <h1>Newton Raphson</h1>
+    <form action="" method="POST">{% csrf_token %}
+        <div class="box-input">
+          <div class="input">
+            <label>Input function:</label> <input id="funcionF" type="text" name="inputField" size="30"/>
+          </div>
+          <div class="input">
+            Input point A: <input type="number" step="any" name="puntoA">
+          </div>
+        </div>
+        <div class="box-botones">
+          <input class="boton" type="submit" value="submit">
+          <button class="boton" onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>  
+        </div>
+        <div class="info">
+          <div class="grafica" id="grafica">
+            <div id="applet_container" ></div>
+          </div>
+          <div class="tabla" id="tabla"> 
+            <div>
+              <table>
+                <tr>
+                  <th>xn</th>
+                  <th>fxn</th>
+                  <th>dfxn</th>
+                  <th>xr</th>
+                  <th>ERROR</th>
+                </tr>
+                {% for i in count %}
+                <tr>
+                  <td>{{ xn|index:i }}</td>
+                  <td>{{ fxn|index:i }}</td>
+                  <td>{{ dfxn|index:i }}</td>
+                  <td>{{ xr|index:i }}</td>
+                  <td>{{ err|index:i }}</td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+    </form>  
+  
+  </div>
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/method.js' %}"></script>
+  <script type="text/javascript">
+    function evalInput(strInput) {
+      tabla=document.getElementById("tabla")  
+      grafica =document.getElementById("grafica")
+      grafica.style.display="flex";
+      tabla.style.display="none";
+      ggbApplet.evalCommand(strInput);
+      return false; 
     }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-</style>
-<form action="" method="POST">
-    {% csrf_token %}
-    Input function: <input type="text" name="inputField" size="30"/>
-    <br>
-    Input point A: <input type="number" step="any" name="puntoA">
-    <br>
-    <input type="submit" value="submit">
-</form>  
-  <dir>
-    <p>Resultado</p>
-    <table>
-      <tr>
-        <th>xn</th>
-        <th>fxn</th>
-        <th>dfxn</th>
-        <th>xr</th>
-        <th>ERROR</th>
-      </tr>
-      {% for i in count %}
-      <tr>
-        <td>{{ xn|index:i }}</td>
-        <td>{{ fxn|index:i }}</td>
-        <td>{{ dfxn|index:i }}</td>
-        <td>{{ xr|index:i }}</td>
-        <td>{{ err|index:i }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-  </dir>
-
+  </script>
 {% endblock %}

@@ -9,16 +9,7 @@
     margin:0;
     box-sizing: border-box;
 }
-body{
-    /*text-align:center;*/
-    /*font-size:1.8rem;*/
-    background-color:#16A67B;
-}
-h1{
-    padding:40px;
-    font-family: 'Baloo 2', cursive;
-    font-weight: 800;
-}
+
 img{
     height:100%;
     padding:5px;
@@ -26,6 +17,7 @@ img{
     margin-left: 20px;
     object-fit: cover;
 }
+
 .conteiner-metodos{
     width:100%;
     margin-top:60px;
