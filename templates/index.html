@@ -10,21 +10,20 @@
 
 
     {% block body %}
-     <h1>Métodos numéricos</h1>
-        <div class="conteiner-metodos">
-            <div class="bloque">
-                <img src="{% static 'img/algebra.png'%}" alt=""><p>Ecuaciones no lineales</p>
-                <a class="bloque__link" href="{% url 'noLineales:Biseccion' %}">
-                </a>
-            </div>
-            <div class="bloque">
-                <img src="{% static 'img/curvas.png' %}" alt=""><p>Ecuaciones algebraicas</p>
-            </div>
-            <div class="bloque">
-                <img src="{% static 'img/lineal.png' %}" alt=""><p>Ajustes de curvas e interpolación</p>
-            </div>
+    <h1>Métodos numéricos</h1>
+    <div class="conteiner-metodos">
+        <div class="bloque">
+            <img src="{% static 'img/algebra.png'%}" alt=""><p>Ecuaciones no lineales</p>
+            <a class="bloque__link" href="{% url 'noLineales:Biseccion' %}"></a>
         </div>
-    {% endblock%}
+        <div class="bloque">
+            <img src="{% static 'img/curvas.png' %}" alt=""><p>Ecuaciones algebraicas</p>
+        </div>
+        <div class="bloque">
+            <img src="{% static 'img/lineal.png' %}" alt=""><p>Ajustes de curvas e interpolación</p>
+        </div>
+    </div>
+    {% endblock %}
 
 
 

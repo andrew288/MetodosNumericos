@@ -8,11 +8,12 @@
   {% endblock %}
 
   {% block title %}
-  Método biseccion
+    <title>Método biseccion</title>
   {% endblock %}
 </head>
 
-{%block body%}
+{% block body %}
+{% include 'navbar.html' %}
   <div class="cuerpo">
     <h1>Método de bisección</h1>
     <form action="/Ecuaciones-no-lineales/Biseccion" method="POST">    {% csrf_token %}

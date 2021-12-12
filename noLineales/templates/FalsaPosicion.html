@@ -4,12 +4,14 @@
 
   {% block estilos%}
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
   {% endblock %}
 
   {% block title %}
-    Método Falsa Posición
+    <title>Método Falsa Posición</title>
   {% endblock %}
-{%block body%}
+{% block body %}
+{% include 'navbar.html' %}
 <div class="cuerpo">
     <h1>Método Falsa posición</h1>
     <form action="/Ecuaciones-no-lineales/Falsa-Posicion" method="POST"> {% csrf_token %}

@@ -12,6 +12,8 @@ h1{
     padding:40px;
     font-family: 'Baloo 2', cursive;
     font-weight: 800;
+    font-size: 50px;
+    text-align: center;
 }
 table {
     font-family: arial, sans-serif;
@@ -19,12 +21,12 @@ table {
     width: 100%;
   }
   
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

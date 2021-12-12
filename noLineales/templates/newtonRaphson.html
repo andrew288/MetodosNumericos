@@ -4,12 +4,14 @@
 {% load index %}
 {% block estilos%}
   <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 {% block title %}
-  Newton Rapshon
+  <title>Newton Rapshon</title> 
 {% endblock %}
 
 {%block body%}
+{% include 'navbar.html' %}
   <div class ="cuerpo">
     <h1>Newton Raphson</h1>
     <form action="" method="POST">{% csrf_token %}
