@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from noLineales.views import home_view, mabiertos
-from calculadora.views import index
+from calculadora.views import Index
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('',index, name="/"),
+    path('', Index.as_view() , name="home"),
     path('admin/', admin.site.urls),
     path('Ecuaciones-no-lineales/', include('noLineales.urls')),
     path('Ecuaciones-algebraicas/', include('algebraicas.urls')),

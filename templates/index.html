@@ -1,28 +1,30 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block script_top %}
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    <title>Mathics</title>
-</head>
-<body>
-    <h1>Métodos numéricos</h1>
-    <div class="conteiner-metodos">
-        <div class="bloque">
-            <img src="{% static 'img/algebra.png'%}" alt=""><p>Ecuaciones no lineales</p>
-            <a class="bloque__link" href="{% url 'noLineales:Biseccion' %}">
-            </a>
+    {% endblock %}
+    {% block title %}
+        <title>Mathics</title>
+    {% endblock %}
+
+
+    {% block body %}
+     <h1>Métodos numéricos</h1>
+        <div class="conteiner-metodos">
+            <div class="bloque">
+                <img src="{% static 'img/algebra.png'%}" alt=""><p>Ecuaciones no lineales</p>
+                <a class="bloque__link" href="{% url 'noLineales:Biseccion' %}">
+                </a>
+            </div>
+            <div class="bloque">
+                <img src="{% static 'img/curvas.png' %}" alt=""><p>Ecuaciones algebraicas</p>
+            </div>
+            <div class="bloque">
+                <img src="{% static 'img/lineal.png' %}" alt=""><p>Ajustes de curvas e interpolación</p>
+            </div>
         </div>
-        <div class="bloque">
-            <img src="{% static 'img/curvas.png' %}" alt=""><p>Ecuaciones algebraicas</p>
-        </div>
-        <div class="bloque">
-            <img src="{% static 'img/lineal.png' %}" alt=""><p>Ajustes de curvas e interpolación</p>
-        </div>
-    </div>
-</body>
-</html>
+    {% endblock%}
+
+
 

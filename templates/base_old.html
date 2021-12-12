@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+  <script type="text/javascript">
+    var parameters = {"prerelease":false,"width":1000,"height":450,"showToolBar":false,"borderColor":null,"showMenuBar":false,"showAlgebraInput":false,
+      "showResetIcon":true,"enableLabelDrags":false,"enableShiftDragZoom":true,"enableRightClick":false,"capturingThreshold":null,"showToolBarHelp":false,
+      "errorDialogsActive":true,"useBrowserForJS":false, "filename":"{% static 'geogebra-export.ggb' %}"};
+
+    var applet = new GGBApplet("5.0", parameters);
+
+    window.onload = function () {
+      applet.inject("applet_container");
+    };
+  </script>
+  <link rel="stylesheet" href="{% static 'styles/sidebarEstilos.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/generales.css' %}">
+  {% block estilos %}
+  {% endblock%}
+  <title>
+      {% block title %}
+      {% endblock %}
+  </title>
+</head>
+<body>
+  <img src="{% static 'img/Rayas.png' %}" class="rayasFuera" id="rayitas">
+  <nav class="nav retroceder" id="sidebar">
+      <div class="sidebar__boton">
+          <h3>Métodos</h3>
+      </div>
+      <ul class="list">
+          <li class="list__item list__item--click">
+              <div class="list__button list__button--click">
+                  <a href="#" class="nav__link">Métodos Cerrados</a>
+                  <img src="{% static 'img/arrow.svg' %}" class="list__arrow">
+              </div>
+
+              <ul class="list__show">
+                  <li class="list__inside">
+                      <a href="/Ecuaciones-no-lineales/Biseccion" class="nav__link nav__link--inside">Método de Bisección</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="/Ecuaciones-no-lineales/Falsa-Posicion" class="nav__link nav__link--inside">Método de Falsa Posición</a>
+                  </li>
+              </ul>
+
+          </li>
+
+          <li class="list__item list__item--click">
+              <div class="list__button list__button--click">
+                  <a href="#" class="nav__link">Métodos Abiertos</a>
+                  <img src="{% static 'img/arrow.svg' %}" class="list__arrow">
+              </div>
+
+              <ul class="list__show">
+                  <li class="list__inside">
+                      <a href="/Ecuaciones-no-lineales/Punto-Fijo" class="nav__link nav__link--inside">Iteración de punto fijo</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="/Ecuaciones-no-lineales/Newton-Raphson" class="nav__link nav__link--inside">Newton Raphson</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="/Ecuaciones-no-lineales/Secante" class="nav__link nav__link--inside">Método de la secante</a>
+                  </li>
+              </ul>
+
+          </li>
+
+          <li class="list__item list__item--click">
+              <div class="list__button list__button--click">
+                  <a href="#" class="nav__link">Métodos Convencionales</a>
+                  <img src="{% static 'img/arrow.svg' %}" class="list__arrow">
+              </div>
+
+              <ul class="list__show">
+                  <li class="list__inside">
+                      <a href="#" class="nav__link nav__link--inside">Newton Raphson modificado</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="#" class="nav__link nav__link--inside">Método de Müller</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="#" class="nav__link nav__link--inside">Método de Bairstow</a>
+                  </li>
+
+                  <li class="list__inside">
+                      <a href="#" class="nav__link nav__link--inside">Método de Graeffe</a>
+                  </li>
+              </ul>
+
+          </li>
+
+      </ul>
+  </nav>
+  {% block body %}
+  {% endblock%}
+  <script src="{% static 'js/sidebar.js' %}"></script>
+</body>
