@@ -8,5 +8,5 @@ urlpatterns = [
     #path('', , name ="" ),
     path('Gauss_Jordan', gauss_jordan_view, name="gauss_jordan_view"),
     path('Gauss_Jordan_Ajax', gauss_jordan_ajax, name="gauss_jordan_ajax"),
-    path('Gauss-seidel', Gauss_seidel, name ="Gauss-seidel" ),
+    path('Gauss_Seidel', Gauss_seidel, name ="Gauss-seidel" ),
 ]

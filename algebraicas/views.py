@@ -6,10 +6,7 @@ import json
 
 # Create your views here.
 
-#Vista para gauss seidel
-def Gauss_seidel(request):
-    context = {}
-    return render(request, 'gauss-seidel.html', context)
+
 def mostrar_matriz(data):
     for i in range(len(data)):
         for j in range(len(data)+1):
@@ -49,7 +46,7 @@ def metodo_gauss_jordan(data):
     for i in x:
         solucion.append(i)
 
-    return solucion;
+    return solucion
 
 
 def gauss_jordan_ajax(request):
@@ -58,7 +55,11 @@ def gauss_jordan_ajax(request):
      solucion = metodo_gauss_jordan(data)
      
      return JsonResponse(json.dumps(solucion), safe=False)
-
+#Vista para gauss seidel
+def Gauss_seidel(request):
+    context = {}
+    return render(request, 'gauss-seidel.html', context)
+    
 def gauss_jordan_view(request):
     context = {}
     return render(request, 'gauss_jordan.html', context=context)

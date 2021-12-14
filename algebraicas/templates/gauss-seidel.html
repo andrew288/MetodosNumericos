@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+<head>
+  {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  {% endblock %}
+
+  {% block title %}
+    <title>Gauss-Seidel</title>
+  {% endblock %}
+</head>
+
+{% block body %}
+{% include 'navbar.html' %}
+  <div class="cuerpo">
+    <h1>Método de Gauss Seidel</h1>
+
+    Ingresar dimensión: <input id="dimension" type="number" min="3" max="6">
+    <button onclick="generarMatriz()">Generar Matriz</button>
+
+    <form>
+      <div id="matrix"></div>
+    </form>
+
+    <div class="box-botones">
+        <input class="boton" onclick="mostrarTabla()" type="submit" value="Mostrar solución">
+    </div>
+
+    <div class="info">
+        <div id="tabla">
+        </div>
+    </div>
+  </div>
+    <script src="{% static 'js/method.js' %}"></script>
+    <script src="{% static 'js/generarMatriz.js' %}"></script>
+  {% endblock %}
