@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 {% block title %}
-  <title>Newton Rapshon</title> 
+  <title>Newton Rapshon Modificado</title> 
 {% endblock %}
 
 {%block body%}
@@ -17,13 +17,13 @@
     <form action="" method="POST">{% csrf_token %}
         <div class="box-input">
           <div class="input">
-            <label>Input function:</label> <input id="funcionF" type="text" name="inputField" size="30"/>
+            <label>Input function:</label> <input id="funcionF" onchange="saveValue(this);" type="text" name="inputField" size="30"/>
           </div>
           <div class="input">
-            Input point A: <input type="number" step="any" name="puntoA">
+            Input point A: <input type="number" id = "puntoA" step="any" onchange="saveValue(this);" name="puntoA">
           </div>
           <div class="input">
-            Input Error:<input type="number" step="any" value="0.0001" name="errorEstimado">
+            Input Error:<input type="number" value="0.0001" step="any" name="errorEstimado">
           </div>
         </div>
         <div class="box-botones">
@@ -37,22 +37,26 @@
           <div class="tabla" id="tabla"> 
             <div>
               <table>
-                <tr>
-                  <th>xn</th>
-                  <th>fxn</th>
-                  <th>dfxn</th>
-                  <th>xr</th>
-                  <th>ERROR</th>
-                </tr>
-                {% for i in count %}
-                <tr>
-                  <td>{{ xn|index:i }}</td>
-                  <td>{{ fxn|index:i }}</td>
-                  <td>{{ dfxn|index:i }}</td>
-                  <td>{{ xr|index:i }}</td>
-                  <td>{{ err|index:i }}</td>
-                </tr>
-                {% endfor %}
+                  <tr>
+                    <th>xn</th>
+                    <th>fxn</th>
+                    <th>dfxn</th>
+                    <th>dfxn2</th>
+                    <th>ddfxn</th>     
+                    <th>xr</th>
+                    <th>ERROR</th>
+                  </tr>
+                  {% for i in count %}
+                  <tr>
+                    <td>{{ xn|index:i }}</td>
+                    <td>{{ fxn|index:i }}</td>
+                    <td>{{ dfxn|index:i }}</td>
+                    <td>{{ dfxn2|index:i }}</td>
+                    <td>{{ ddfxn|index:i }}</td>
+                    <td>{{ xr|index:i }}</td>
+                    <td>{{ err|index:i }}</td>
+                  </tr>
+                  {% endfor %}
               </table>
             </div>
           </div>
@@ -71,5 +75,18 @@
       ggbApplet.evalCommand(strInput);
       return false; 
     }
+    document.getElementById("funcionF").value = getSavedValue("funcionF");   
+    document.getElementById("puntoA").value = getSavedValue("puntoA");  
+        function saveValue(e){
+            var id = e.id;  
+            var val = e.value; 
+            localStorage.setItem(id, val);
+        }
+        function getSavedValue  (v){
+            if (!localStorage.getItem(v)) {
+                return "";
+            }
+            return localStorage.getItem(v);
+        }
   </script>
 {% endblock %}

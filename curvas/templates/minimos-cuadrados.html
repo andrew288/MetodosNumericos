@@ -8,19 +8,19 @@
   {% endblock %}
 
   {% block title %}
-    <title>Método de Gauss Jordan</title>
+    <title>Método de Mínimos Cuadrados</title>
   {% endblock %}
 </head>
 
 {% block body %}
 {% include 'navbar.html' %}
   <div class="cuerpo">
-    <h1>Método de Gauss Jordan</h1>
+    <h1>Método de Mínimos Cuadrados</h1>
 
-    Ingresar dimensión: <input id="dimension" type="number" min="3" max="6">
-    <button onclick="generarMatriz()">Generar Matriz</button>
+    Ingresar número de puntos: <input id="puntos" type="number" min="3" max="6">
+    <button onclick="generarTabla()">Generar tabla</button>
 
-    <form>
+    <form action="">
       <div id="matrix"></div>
     </form>
 
@@ -38,7 +38,7 @@
 
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/method.js' %}"></script>
-    <script src="{% static 'js/algebraicas/gauss-jordan.js' %}"></script>
+    <script src="{% static 'js/curvas/minimos-cuadrados.js' %}"></script>
     <script type="text/javascript">
     function evalInput(strInput) {
         tabla=document.getElementById("tabla")  

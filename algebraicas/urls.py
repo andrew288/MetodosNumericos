@@ -1,7 +1,8 @@
 from django.urls import path
 from algebraicas.views import (Gauss_seidel,
     gauss_jordan_ajax,
-    gauss_jordan_view)
+    gauss_jordan_view,
+)
 
 app_name = 'algebraicas'
 urlpatterns = [

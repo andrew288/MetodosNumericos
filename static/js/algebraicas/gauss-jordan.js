@@ -16,7 +16,7 @@ function generarMatriz(){
     }
 
     // Ahora agregamos el input
-    codeHTML+='<button type="button" onclick="enviarDatos()">Resolver</button>';
+    codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
 
     document.getElementById('matrix').innerHTML=codeHTML;
 }
@@ -32,7 +32,7 @@ function enviarDatos(){
     for(let i=0; i<dimension; i++){
         let matrixFila = [];
         for(let j=0; j<(matriz.length/dimension);j++){
-            matrixFila.push(parseInt(matriz[count].value));
+            matrixFila.push(parseFloat(matriz[count].value));
             count++;
         }
         matrix.push(matrixFila);
