@@ -7,7 +7,8 @@ from noLineales.views import (
     mabiertos,
     newtonRaphson,
     home_view,   
-    graeffe
+    graeffe,
+    muller
 )
 
 app_name = 'noLineales'
@@ -19,6 +20,7 @@ urlpatterns = [
     path('Punto-Fijo', puntoFijo, name = "Punto-Fijo"),
     #convencionales
     path('Graeffe', graeffe, name = 'Graeffe'),
+    path('Muller', muller, name= 'Muller'),
     #pa probar
     path('mabiertos',mabiertos, name = "mabiertos"),
     path('home',home_view, name="home_view"),
