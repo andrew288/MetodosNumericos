@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 {% block title %}
-  <title>Newton Rapshon</title> 
+  <title>Newton Rapshon Modificado</title> 
 {% endblock %}
 
 {%block body%}
@@ -37,22 +37,26 @@
           <div class="tabla" id="tabla"> 
             <div>
               <table>
-                <tr>
-                  <th>xn</th>
-                  <th>fxn</th>
-                  <th>dfxn</th>
-                  <th>xr</th>
-                  <th>ERROR</th>
-                </tr>
-                {% for i in count %}
-                <tr>
-                  <td>{{ xn|index:i }}</td>
-                  <td>{{ fxn|index:i }}</td>
-                  <td>{{ dfxn|index:i }}</td>
-                  <td>{{ xr|index:i }}</td>
-                  <td>{{ err|index:i }}</td>
-                </tr>
-                {% endfor %}
+                  <tr>
+                    <th>xn</th>
+                    <th>fxn</th>
+                    <th>dfxn</th>
+                    <th>dfxn2</th>
+                    <th>ddfxn</th>     
+                    <th>xr</th>
+                    <th>ERROR</th>
+                  </tr>
+                  {% for i in count %}
+                  <tr>
+                    <td>{{ xn|index:i }}</td>
+                    <td>{{ fxn|index:i }}</td>
+                    <td>{{ dfxn|index:i }}</td>
+                    <td>{{ dfxn2|index:i }}</td>
+                    <td>{{ ddfxn|index:i }}</td>
+                    <td>{{ xr|index:i }}</td>
+                    <td>{{ err|index:i }}</td>
+                  </tr>
+                  {% endfor %}
               </table>
             </div>
           </div>
