@@ -1,7 +1,6 @@
 from django.urls import path
-#from algebraicas.views import()
-
+from algebraicas.views import (Gauss_seidel)
 app_name = 'algebraicas'
 urlpatterns = [
-    #path('', , name ="" ),
+    path('Gauss-seidel', Gauss_seidel, name ="Gauss-seidel" ),
 ]
