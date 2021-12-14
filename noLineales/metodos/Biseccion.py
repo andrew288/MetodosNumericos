@@ -40,7 +40,7 @@ def metodo_biseccion(express, puntoA, puntoB, errorEstimado, truncate):
         if(count>0):
             error = abs((xr[count]-xr[count-1])/xr[count])
             err.append(error)
-            if(error < 0.0001 or error == 0):
+            if(error < float(errorEstimado) or error == 0):
                 itr = count + 1
                 count = 100
         else:

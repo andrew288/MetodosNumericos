@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load index %}
+{% block estilos%}
+  <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
+{% block title %}
+  <title>Método Punto Fijo</title> 
+{% endblock %}
+{%block body%}
+{% include 'navbar.html' %}
+  <div class="cuerpo">
+    <h1>Iteración Punto fijo</h1>
+    <form action="/Ecuaciones-no-lineales/Muller" method="POST">
+      {% csrf_token %}
+      <div class="box-input">
+        <div class="input">
+          <label>Función f(x):</label> <input value="" id="funcionF" type="text" name="inputField" size="30"/>
+        </div>
+
+        <div class="input">
+            <label>Intervalo:[</label><input class="intervalo" id="puntoA" type="number" name="puntoA" step="any">,<input class="intervalo" id="puntoB" type="number" name="puntoB" step="any">]
+        </div>
+
+        <div class="input">
+          <label>Input ERROR:</label>
+          <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+        </div>
+        <div class="input">
+          Input truncate:
+          <input name="truncate" type="number" max="5" min="1">
+        </div>
+      </div>
+      <div class="box-botones">
+        <input  class="boton" type="submit" value="Mostrar Tabla">
+        <button class="boton" onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Gráfica F(X)</button>
+      </div>
+      <div class="info">
+        <div class="grafica" id="grafica">
+          <div id="applet_container"></div>
+        </div>
+        <div class="tabla" id="tabla">   
+          <div>
+            <table class="table table-striped">
+              <thead class="table-dark">
+                {% for i in nCate %}
+                <th>{{ cate|index:i }}</th>
+                {% endfor %}
+              </thead>
+                {% for i in count %}
+                <tr>
+                  <td>{{ x0|index:i }}</td>
+                  <td>{{ x1|index:i }}</td>
+                  <td>{{ x2|index:i }}</td>
+                  <td>{{ err|index:i }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/method.js' %}"></script>
+  <script type="text/javascript">
+    function evalInput(strInput) {
+      tabla=document.getElementById("tabla")  
+      grafica =document.getElementById("grafica")
+      grafica.style.display="flex";
+      tabla.style.display="none";
+      ggbApplet.evalCommand(strInput);
+      return false; 
+    }
+  </script>
+
+{% endblock %}
