@@ -5,6 +5,11 @@ import numpy as np
 import json
 
 # Create your views here.
+
+#Vista para gauss seidel
+def Gauss_seidel(request):
+    context = {}
+    return render(request, 'gauss-seidel.html', context)
 def mostrar_matriz(data):
     for i in range(len(data)):
         for j in range(len(data)+1):

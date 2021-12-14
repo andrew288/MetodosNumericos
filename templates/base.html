@@ -13,7 +13,19 @@
   {% endblock%}
   {% block title %}
   {% endblock %}
+  <!--Geogebra API-->
+  <script type="text/javascript" src="https://cdn.geogebra.org/apps/deployggb.js"></script>
+  <script type="text/javascript">
+    var parameters = {"prerelease":false,"width":1000,"height":450,"showToolBar":false,"borderColor":null,"showMenuBar":false,"showAlgebraInput":false,
+      "showResetIcon":true,"enableLabelDrags":false,"enableShiftDragZoom":true,"enableRightClick":false,"capturingThreshold":null,"showToolBarHelp":false,
+      "errorDialogsActive":true,"useBrowserForJS":false, "filename":"{% static 'geogebra-export.ggb' %}"};
 
+    var applet = new GGBApplet("5.0", parameters);
+
+    window.onload = function () {
+      applet.inject("applet_container");
+    };
+  </script>
   <!-- Para peticicones POST con AJAX -->
   <script>
     function getCookie(name) {
@@ -34,7 +46,7 @@
     
     const csrftoken = getCookie('csrftoken');
   </script>
-
+  
 </head>
 <body>
 
@@ -43,5 +55,5 @@
 
   {% block script_buttom %}
   {% endblock %}
-  <script src="{% static 'js/sidebar.js' %}"></script>
+
 </body>

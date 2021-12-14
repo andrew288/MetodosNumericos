@@ -2,7 +2,6 @@ let listElements = document.querySelectorAll('.list__button--click');
 let navbar = document.getElementById("sidebar");
 var cont = 0;
 let rayitas = document.getElementById('rayitas');
-
 rayitas.addEventListener('click', ()=>{
     cont++;
     if(cont%2 == 0){
@@ -15,11 +14,11 @@ rayitas.addEventListener('click', ()=>{
 
 listElements.forEach(listElement => {
     listElement.addEventListener('click', ()=>{
-        
         listElement.classList.toggle('arrow');
-
+        
         let height = 0;
         let menu = listElement.nextElementSibling;
+        console.log(listElement)
         if(menu.clientHeight == "0"){
             height = menu.scrollHeight;
         }

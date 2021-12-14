@@ -1,4 +1,4 @@
-var select = document.getElementById("seleccionMetodo");
+/* var select = document.getElementById("seleccionMetodo");
 select.addEventListener("change",(event)=>{
     const funcionG = document.getElementById("funcionG");
     const puntoB =  document.getElementById("puntoB");
@@ -14,3 +14,4 @@ select.addEventListener("change",(event)=>{
         }
     }
 })
+ */
