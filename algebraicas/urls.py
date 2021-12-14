@@ -2,7 +2,7 @@ from django.urls import path
 #from algebraicas.views import()
 from algebraicas.views import (
     gauss_jordan_ajax,
-    gauss_jordan_view
+    gauss_jordan_view,
 )
 
 
