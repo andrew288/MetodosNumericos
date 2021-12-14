@@ -5,6 +5,7 @@ from .metodos.FalsaPosicion import metodo_posicion_falsa
 from .metodos.PuntoFijo import metodo_punto_fijo
 from .metodos.NewtonRapshon import  metodo_newton_raphson
 from .metodos.Secante import metodo_secante
+from .metodos.Graeffe import metodo_graeffe
 
 def home_view(request):
 
@@ -112,3 +113,14 @@ def secante(request):
         puntoA =  request.POST["puntoA"]
         context = metodo_secante(funcion, puntoA)
     return render(request, 'secante.html', context=context)
+
+#Vista de convencionales
+def graeffe(request):
+    context = {}
+    if request.POST:
+        c1 = request.POST["coef1"]
+        c2 = request.POST["coef2"]
+        c3 = request.POST["coef3"]
+        c4 = request.POST["coef4"]
+        context = metodo_graeffe(c1, c2, c3, c4)
+    return render(request, 'graeffe.html', context=context)

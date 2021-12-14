@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load index %}
+{% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
+{% block title %}
+    <title>Método Graeffe</title> 
+{% endblock %}
+
+{%block body%}
+{% include 'navbar.html' %}
+<div class="cuerpo">
+    <h1>Método Graeffe</h1>
+    <form action="" method="POST">{% csrf_token %}
+        <div class="box-input">
+            <div class="input">
+                C1: <input type="number" step="any" name="coef1">
+            </div>
+            <div class="input">
+                C2: <input type="number" step="any" name="coef2">
+            </div>
+            <div class="input">
+                C3: <input type="number" step="any" name="coef3">
+            </div>
+            <div class="input">
+                C4: <input type="number" step="any" name="coef4">
+            </div>
+        </div>
+        <div class="box-botones">
+            <input class="boton" type="submit" value="Mostrar tabla">
+        </div>
+        <div class="info">
+            <div class="grafica" id="grafica">
+                <div id="applet_container" ></div>
+            </div>
+            <div class="tabla" id="tabla"> 
+                <div>
+                    <p>Resultado</p>
+                    <table>
+                        <tr>
+                            <th>It</th>
+                            <th>a0</th>
+                            <th>a1</th>
+                            <th>a2</th>
+                            <th>a3</th>
+                        </tr>
+                        {% for i in count %}
+                        <tr>
+                            <td>{{ it|index:i }}</td>
+                            <td>{{ aa0|index:i }}</td>
+                            <td>{{ aa1|index:i }}</td>
+                            <td>{{ aa2|index:i }}</td>
+                            <td>{{ aa3|index:i }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>  
+</div>
+
+<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/method.js' %}"></script>
+<script type="text/javascript">
+function evalInput(strInput) {
+    tabla=document.getElementById("tabla")  
+    grafica =document.getElementById("grafica")
+    grafica.style.display="flex";
+    tabla.style.display="none";
+    ggbApplet.evalCommand(strInput);
+    return false; 
+}
+</script>
+{% endblock %}
