@@ -1,8 +1,8 @@
-from sympy import *
 
+from sympy import *
 #Método de Newton Raphson
 
-def metodo_newton_raphson(express,puntoA,errorEstimado):
+def metodo_nr_modificado(express,puntoA, errorEstimado):
     print("Metodo Newton Raphson")
     #declaracion de variables
     x = symbols('x')
@@ -15,6 +15,8 @@ def metodo_newton_raphson(express,puntoA,errorEstimado):
     xr = []
     fxn = []
     dfxn = []
+    ddfxn = []
+    dfxn2 = []
 
     err = []
     error = 0
@@ -23,6 +25,7 @@ def metodo_newton_raphson(express,puntoA,errorEstimado):
     expr= sympify(str_expr, evaluate=False)
     f = lambdify(x,expr)
     df = lambdify(x,diff(expr,x))
+    ddf =lambdify(x,diff(expr,x,2))
     #asignacion de puntos iniciales
     xn.append(float(puntoA))
 
@@ -31,8 +34,10 @@ def metodo_newton_raphson(express,puntoA,errorEstimado):
     while(count<100):
         fxn.append(f(xn[count]))
         dfxn.append(df(xn[count]))
-        xr.append(xn[count]-((fxn[count])/(dfxn[count])))
-        xn.append(xr[count])        
+        ddfxn.append(ddf(xn[count]))
+        dfxn2.append(dfxn[count]*dfxn[count])
+        xr.append(xn[count]-((fxn[count])*(dfxn[count])/(dfxn2[count]-(fxn[count])*(ddfxn[count]))))
+        xn.append(xr[count])   
         if(count>0):
             error = abs((xr[count]-xr[count-1])/xr[count])
             err.append(error)
@@ -46,14 +51,15 @@ def metodo_newton_raphson(express,puntoA,errorEstimado):
 
     #pasamos nuestros valores
     context = {
-        "metodo":"newtonRaphson",
+        "metodo":"newtonRaphsonModificado",
         "count":range(itr),
         "xn":xn,
         "xr":xr,
         "fxn":fxn,
         "dfxn":dfxn,
+        "dfxn2":dfxn2,
+        "ddfxn":ddfxn,
         "err":err,
     }
 
     return context
-    

@@ -2,7 +2,7 @@ from sympy import *
 
 #Método de Secante
 
-def metodo_secante(express,puntoA):
+def metodo_secante(express,puntoA,errorEstimado):
     print("Metodo Secante")
     #declaracion de variables
     x = symbols('x')
@@ -39,10 +39,10 @@ def metodo_secante(express,puntoA):
     while(count<100):
         fxi.append(f(xi[count]))
         fxi_1.append(f(xi_1[count]))
-
-
-        xr.append(xi[count]-(fxi[count]*(xi_1[count]-xi[count]))/(fxi_1[count]-fxi[count]))
-
+        if (fxi_1[count]-fxi[count]) == 0 :
+            xr.append(float(puntoA))
+        else :
+            xr.append(xi[count]-(fxi[count]*(xi_1[count]-xi[count]))/(fxi_1[count]-fxi[count]))
         xi.append(xr[count])
 
         xi_1.append(xi[count])
@@ -50,7 +50,7 @@ def metodo_secante(express,puntoA):
         if(count>0):
             error = abs((xr[count]-xr[count-1])/xr[count])
             err.append(error)
-            if(error == 0):
+            if(error <= float(errorEstimado)):
                 itr = count + 1
                 count = 100
         else:
