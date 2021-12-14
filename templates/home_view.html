@@ -33,6 +33,7 @@
           <option value="biseccion">Método Biseccion</option>
           <option value="falsaPosicion">Método Falsa Posición</option>
           <option value="puntoFijo">Método Punto Fijo</option>
+          <option value="muller">Método Muller</option>
         </select>
       </div>
 
@@ -56,12 +57,12 @@
 
       <div>
         Input ERROR:
-        <input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+        <input name="error" type="number" value="0.0001" step="any" min="0.00000001" max="0.01">
       </div>
 
       <div>
         Input truncate:
-        <input name="truncate" type="number" max="5" min="1">
+        <input name="truncate" type="number" value="4" max="5" min="1">
       </div>
       <br>
       <input type="submit" value="submit">
@@ -99,6 +100,18 @@
           </tr>
           {% endfor %}
         {% endif %}
+
+        {% if metodo == "muller" %}
+          {% for i in count %}
+          <tr>
+            <td>{{ x0|index:i }}</td>
+            <td>{{ x1|index:i }}</td>
+            <td>{{ x2|index:i }}</td>
+            <td>{{ err|index:i }}</td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+
       </table>
     </div>
   </div>
