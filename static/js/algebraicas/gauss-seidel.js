@@ -6,13 +6,13 @@ function generarMatriz(){
     for(let i=0; i<parseInt(dimension); i++){
         for(let j=0; j<parseInt(dimension)+1; j++){
             if(j<dimension-1){
-                codeHTML+='<input class=" intervalo indice" type="number" value=2> + ';
+                codeHTML+='<input class="intervalo indice" type="number"> + ';
             }
             else if(j==dimension-1){
-                codeHTML+='<input class="intervalo indice" type="number" value=2>=';
+                codeHTML+='<input class="intervalo indice" type="number"> =';
             }
             else{
-                codeHTML+='<input class="intervalo indice" type="number" value=2>';
+                codeHTML+='<input class="intervalo indice" type="number">';
             }
         }
         codeHTML+="<br>";
