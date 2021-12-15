@@ -92,15 +92,16 @@ def metodo_diferencias_divididas(data):
         it=it-1
         print('\n')  
     
-    strFuncion = ""
+    strFuncion = f'{Solucion[0]} + '
     strXs = ""
     it = N
-    it2 = 0
+    it2 = 1
     for i in range(N):
-        strXs = strXs + f'(x-{xis[i]})'
+        if i >=1:
+            strXs = strXs + f'(x-{xis[i-1]})'
         for j in range(it):
-            if j==0:
-                strFuncion =  strFuncion+ f'{Solucion[it2]}*{strXs} + '
+            if j==0 and i>=1:
+                strFuncion =  strFuncion+ f'{Solucion[it2-1]}*{strXs} + '
             it2=it2+1
             
         it=it-1
