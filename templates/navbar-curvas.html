@@ -1,0 +1,42 @@
+{% load static %}
+<head>
+    {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/sidebarEstilos.css' %}">
+    {% endblock %}
+</head>
+<img src="{% static 'img/Rayas.png' %}" class="rayasFuera" id="rayitas">
+<nav class="nav retroceder" id="sidebar">
+    <div class="sidebar__boton">
+        <h3>Interpolación y ajuste de curvas</h3>
+    </div>
+    <ul class="list">
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="../" class="nav__link">Menú Principal</a>
+            </div>
+        </li>
+
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="/Ajuste-interpolacion/Minimos_Cuadrados" class="nav__link">Regresión por mínimos cuadrados</a>
+            </div>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="#" class="nav__link">Diferencias finitas</a>
+            </div>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="/Ajuste-interpolacion/Diferencias_Divididas" class="nav__link">Diferencias divididas</a>
+            </div>
+        </li>
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="#" class="nav__link">Interpolación de Lagrange</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+<script src="{% static 'js/sidebar.js' %}"></script>

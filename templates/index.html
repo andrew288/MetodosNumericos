@@ -18,10 +18,11 @@
         </div>
         <div class="bloque">
             <img src="{% static 'img/algebra.png' %}" alt=""><p>Ecuaciones algebraicas</p>
-            <a class="bloque__link" href="{% url 'noLineales:Biseccion' %}"></a>
+            <a class="bloque__link" href="{% url 'algebraicas:gauss_jordan_view' %}"></a>
         </div>
         <div class="bloque">
             <img src="{% static 'img/curvas.png' %}" alt=""><p>Ajustes de curvas e interpolación</p>
+            <a class="bloque__link" href="{% url 'curvas:minimos_cuadrados' %}"></a>
         </div>
     </div>
     {% endblock %}

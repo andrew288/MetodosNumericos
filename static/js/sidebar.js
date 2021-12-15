@@ -18,7 +18,7 @@ listElements.forEach(listElement => {
         
         let height = 0;
         let menu = listElement.nextElementSibling;
-        console.log(listElement)
+
         if(menu.clientHeight == "0"){
             height = menu.scrollHeight;
         }
