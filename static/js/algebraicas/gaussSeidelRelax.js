@@ -31,6 +31,7 @@ function enviarDatos(){
     let dimension = parseInt(document.getElementById('dimension').value);
     let error = document.getElementById('error').value;
     let Decimales = document.getElementById('decimales').value;
+    let peso = document.getElementById('peso').value;
     let matrix = []
     let count = 0;
     let solucion;
@@ -48,10 +49,11 @@ function enviarDatos(){
     console.log(JSON.stringify(matrix))
     let values ={
         "Matrix":matrix,
-        "Error":error
+        "Error":error,
+        "Peso":peso,
     }
     console.log( JSON.stringify(values))
-    fetch('/Ecuaciones-algebraicas/Gauss_Seidel_Ajax',{
+    fetch('/Ecuaciones-algebraicas/Gauss_SeidelRelax_Ajax',{
         method: 'POST',
         body: JSON.stringify(values),
         headers:{

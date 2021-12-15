@@ -1,4 +1,5 @@
-def metodo_gauss_seidel(data, Error): 
+def metodo_gauss_seidel(data, Error):
+    print("GAUSS SEIDEL ESTRESADO") 
     a = data
     iteraciones = 0
     errores = [100]*len(a)
