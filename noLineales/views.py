@@ -8,6 +8,10 @@ from .metodos.Secante import metodo_secante
 from .metodos.Graeffe import metodo_graeffe
 from .metodos.Muller import metodo_muller
 from .metodos.NewtonRaphsonModificado import metodo_nr_modificado 
+from .metodos.bairstow import bairstow
+
+
+
 
 def home_view(request):
 
@@ -154,3 +158,15 @@ def muller(request):
         truncate = request.POST["truncate"]
         context = metodo_muller(funcionF, puntoA, puntoB, error, truncate)
     return render(request, 'muller.html', context=context)
+
+def bairstowView(request):
+    context = {}
+    context['value_error'] = 0.001
+    if request.POST:
+        expresion = request.POST["expresion"]
+        valor_r = request.POST["r"]
+        valor_s = request.POST["s"]
+        error = request.POST["error"]
+        context = bairstow(expresion, float(error), int(valor_r), int(valor_s))
+        context['value_error'] = error
+    return render(request, 'bairstow.html', context=context)

@@ -9,7 +9,8 @@ from noLineales.views import (
     home_view,   
     graeffe,
     muller,
-    newtonRaphsonModificado
+    newtonRaphsonModificado,
+    bairstowView
 )
 
 app_name = 'noLineales'
@@ -26,5 +27,6 @@ urlpatterns = [
     #pa probar
     path('mabiertos',mabiertos, name = "mabiertos"),
     path('home',home_view, name="home_view"),
+    path('bairstow', bairstowView, name='bairstow'),
 ]
 
