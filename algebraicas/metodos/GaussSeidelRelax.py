@@ -1,5 +1,8 @@
-def metodo_gauss_seidel_relajacion(data,peso):
+def metodo_gauss_seidelRelax(data,error,peso):
+    print("GAUS SEIDEL RELAJACION")
     a = data
+    error =float(error)
+    peso = float(peso)
     iteraciones = 0
     errores = [100]*len(a)
     valores = [0]*len(a)
@@ -8,12 +11,14 @@ def metodo_gauss_seidel_relajacion(data,peso):
     temporales = [0]*len(a)
     #Arreglos para imprimir los valores en la interfaz
     Variables =[]
-    Errores = []
+    Errores = [[100]*len(a)]
     while(confirm) :
+        tempVariables =[]
+        tempErrores = []
         contadorErrores=0
         #For donde confirmo que todas las variables tienen un error < 0.001
         for i in range(len(errores)):
-            if errores[i]<0.001:
+            if errores[i]<error:
                 contadorErrores+=1        
         if contadorErrores==len(a):
             break
@@ -39,16 +44,19 @@ def metodo_gauss_seidel_relajacion(data,peso):
             #peso*tempX+(1-peso)*oldx
             valores[i] =peso*temporales[i]+(1-peso)*olds[i]
             """ print("Valores en la pos "+str(i)+ " : "+ str(valores[i])) """
-        Variables.append(valores)
-        Errores.append(errores)
         #For que muestra los valores finales de todas nuestras variables
         for i in range(len(valores)):
             print("valores en " +str(i)+" : "+ str(valores[i]))
+            tempVariables.append(valores[i])
+        Variables.append(tempVariables)
         #Condicional para empezar a calcular el error desde la segunda iteración
         if iteraciones>1:
             for i in range(len(errores)):
                 errores[i]=abs((valores[i]-olds[i])/valores[i])
                 print("error en "+ str(i)+" : "+str(errores[i]))
+                tempErrores.append(errores[i])
+            Errores.append(tempErrores)
+        
         #Te odio :"v
         print("------------------------") 
     context = {
