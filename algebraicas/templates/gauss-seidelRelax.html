@@ -5,6 +5,7 @@
   {% block estilos%}
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
   {% endblock %}
 
   {% block title %}
@@ -13,7 +14,7 @@
 </head>
 
 {% block body %}
-{% include 'navbar.html' %}
+{% include 'navbar-algebraicas.html' %}
   <div class="cuerpo">
     <h1>Método de Gauss Seidel con relajación</h1>
 

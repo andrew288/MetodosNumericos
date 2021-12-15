@@ -6,14 +6,14 @@ function generarMatriz(){
     for(let i=0; i<parseInt(dimension); i++){
         for(let j=0; j<parseInt(dimension)+1; j++){
             if(j==dimension){
-                codeHTML+=`<input class="indice" type="number" value=2>`;
+                codeHTML+=`<input class="indice" type="number">`;
             }
             else{
                 if(j==(parseInt(dimension)-1)){
-                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number" value=2> = `;
+                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number"> = `;
                 }
                 else{
-                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number" value=2> + `;
+                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number"> + `;
                 }            
             }
         }
