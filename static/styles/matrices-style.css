@@ -8,8 +8,15 @@
     padding: 6px;
     background-color:#EEEA7E;
     border-radius: 10px;
+    border:none;
+    padding:10px;
+    text-align: center;
+    margin:10px;
+    border: 0.5px solid transparent;
 }
-
+.b-resolver:hover{
+    border: 0.5px solid black;
+}
 .s-variable{
     font-size: 20px;
     margin-left: 25px;
@@ -36,4 +43,9 @@
 }
 .p-solucion-ajustes{
     font-size: 20px;
+}
+
+.input-seidel{
+    width: 110px;
+    text-align: center;
 }

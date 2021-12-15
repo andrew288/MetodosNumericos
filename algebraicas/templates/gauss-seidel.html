@@ -18,10 +18,11 @@
   <div class="cuerpo">
     <h1>Método de Gauss Seidel</h1>
 
-    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6">
-    <button onclick="generarMatriz()">Generar Matriz</button>
-    <label>Error:</label><input id="error" type="number">
-    <label>Decimales:</label><input id="decimales" type="number">
+    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6" class="input-seidel">
+    <button onclick="generarMatriz()" class="b-resolver">Generar Matriz</button>
+    <br>
+    <label>Error:</label><input id="error" type="number" class="input-seidel">
+    <label>Decimales:</label><input id="decimales" type="number" class="input-seidel">
     <form>
       <div id="matrix"></div>
     </form>
