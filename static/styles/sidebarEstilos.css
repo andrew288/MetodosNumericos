@@ -22,9 +22,7 @@
     height: 29px;
     width: 37px;
     z-index: 9999;
-}
-.rayas{
-    z-index: 2;
+    cursor: pointer;
 }
 .retroceder{
     position: relative;

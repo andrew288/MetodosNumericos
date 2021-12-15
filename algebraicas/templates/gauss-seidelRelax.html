@@ -5,7 +5,6 @@
   {% block estilos%}
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
   {% endblock %}
 
   {% block title %}
@@ -14,14 +13,15 @@
 </head>
 
 {% block body %}
-{% include 'navbar-algebraicas.html' %}
+{% include 'navbar.html' %}
   <div class="cuerpo">
-    <h1>Método de Gauss Seidel</h1>
+    <h1>Método de Gauss Seidel con relajación</h1>
 
     <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6">
     <button onclick="generarMatriz()">Generar Matriz</button>
-    <label>Error:</label><input id="error" type="number">
-    <label>Decimales:</label><input id="decimales" type="number">
+    <label for="error">Error:</label><input id="error" type="number">
+    <label for="decimales">Decimales:</label><input id="decimales" type="number">
+    <label for="peso">Peso:</label><input id="peso" type="number" >
     <form>
       <div id="matrix"></div>
     </form>
@@ -31,5 +31,5 @@
     </div>
   </div>
     <script src="{% static 'js/method.js' %}"></script>
-    <script src="{% static 'js/algebraicas/gauss-seidel.js' %}"></script>
+    <script src="{% static 'js/algebraicas/gaussSeidelRelax.js' %}"></script>
   {% endblock %}
