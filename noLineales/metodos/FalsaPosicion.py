@@ -2,7 +2,7 @@ from sympy import *
 
 #Método de Falsa Posición
 
-def metodo_posicion_falsa(express, puntoA, puntoB, errorEstimado):
+def metodo_posicion_falsa(express, puntoA, puntoB, errorEstimado, truncate):
     print("Metodo Falsa Posicion")
     #declaracion de variables
     x = symbols('x')
@@ -65,6 +65,11 @@ def metodo_posicion_falsa(express, puntoA, puntoB, errorEstimado):
         "fxd":fxd,
         "fxr":fxr,
         "err":err,
+        "funcionF":express,
+        "puntoA":puntoA,
+        "puntoB":puntoB,
+        "error":errorEstimado,
+        "truncate":truncate,
     }
     print(context)
 
