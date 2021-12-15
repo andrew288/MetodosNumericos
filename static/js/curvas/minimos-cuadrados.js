@@ -4,7 +4,7 @@ function generarTabla(){
     let codeHTML="";
 
     for(let i=0; i<parseInt(dimension); i++){
-        codeHTML+='[ <input class="punto" type="number" value=2> , <input class="punto" type="number" value=2> ]';
+        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span> [ <input class="indice" type="number" value=2> , <input class="indice" type="number" value=2> ]`;
         codeHTML+="<br>";
     }
 
@@ -15,12 +15,13 @@ function generarTabla(){
 }
 
 function enviarDatos(){
-    let matriz = document.getElementsByClassName('punto');
+    let matriz = document.getElementsByClassName('indice');
     let dimension = parseInt(document.getElementById('puntos').value);
     let matrix = []
     let count = 0;
     let solucion;
     let valueHMTL = "";
+    let tablaHTML = "";
     console.log(matriz.length);
     for(let i=0; i<dimension; i++){
         let matrixFila = [];
@@ -44,10 +45,46 @@ function enviarDatos(){
         console.log(data);
         solucion = JSON.parse(data)
         console.log(solucion)
-        valueHMTL+=`<p>Pendiente: ${solucion.m}</p> <br>`;
-        valueHMTL+=`<p>Valor de b: ${solucion.b}</p> <br>`;
-        valueHMTL+=`<p>Coeficiente de correlación: ${solucion.c}</p> <br>`;
-        valueHMTL+=`<P>Función: ${solucion.funcion}</P> <br>`
+        tablaHTML+=`<table class="table table-striped">
+                        <thead class="table-dark">
+                            <th>#</th>
+                            <th>x</th>
+                            <th>y</th>
+                            <th>xy</th>
+                            <th>x^2</th>
+                            <th>y^2</th>
+                        </thead>`;
+        
+        for(let i=0; i<solucion.n; i++){
+            tablaHTML+=`<tr>
+                <td scope="row">${(i+1)}</td>
+                <td>${solucion.puntos[i][0]}</td>
+                <td>${solucion.puntos[i][1]}</td>
+                <td>${solucion.xy[i]}</td>
+                <td>${solucion.x2[i]}</td>
+                <td>${solucion.y2[i]}</td>
+            </tr>`
+        }
+
+        tablaHTML+= `<tr>
+            <td>Σ</td>
+            <td>${solucion.sx}</td>
+            <td>${solucion.sy}</td>
+            <td>${solucion.sxy}</td>
+            <td>${solucion.sx2}</td>
+            <td>${solucion.sy2}</td>
+        </tr>`
+
+        tablaHTML+=`</table>`
+
+        // Tabla HTML
+        document.getElementById('tabla-solucion').innerHTML = tablaHTML;
+        // Resultados
+
+        valueHMTL+=`<p class="p-solucion-ajustes">Pendiente: <span class="s-solucion">${solucion.m}</span></p> <br>`;
+        valueHMTL+=`<p class="p-solucion-ajustes">Valor de b: <span class="s-solucion">${solucion.b}</span></p> <br>`;
+        valueHMTL+=`<p class="p-solucion-ajustes">Coeficiente de correlación: <span class="s-solucion">${solucion.c}</span></p> <br>`;
+        valueHMTL+=`<P class="p-solucion-ajustes">Función: <span class="s-solucion">${solucion.funcion}</span></P> <br>`
         document.getElementById('tabla').innerHTML = valueHMTL;
     })
 }

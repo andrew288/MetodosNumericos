@@ -5,6 +5,7 @@
   {% block estilos%}
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
   {% endblock %}
 
   {% block title %}
@@ -17,8 +18,8 @@
   <div class="cuerpo">
     <h1>Método de Mínimos Cuadrados</h1>
 
-    Ingresar número de puntos: <input id="puntos" type="number" min="3" max="6">
-    <button onclick="generarTabla()">Generar tabla</button>
+    Ingresar número de puntos: <input id="puntos" class="input-dimension" type="number" min="3" max="6">
+    <button onclick="generarTabla()" class="b-resolver">Generar tabla</button>
 
     <form action="">
       <div id="matrix"></div>
@@ -30,7 +31,11 @@
             <br>
         </div>
 
-        <div id="tabla">
+        <div id="tabla-solucion" class="tabla">
+
+        </div>
+
+        <div id="tabla" class="d-resultado">
 
         </div>
     </div>

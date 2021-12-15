@@ -5,7 +5,8 @@
   {% block estilos%}
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-  {% endblock %}
+    <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
+    {% endblock %}
 
   {% block title %}
     <title>Método de Gauss Jordan</title>
@@ -17,8 +18,8 @@
   <div class="cuerpo">
     <h1>Método de Gauss Jordan</h1>
 
-    Ingresar dimensión: <input id="dimension" type="number" min="3" max="6">
-    <button onclick="generarMatriz()">Generar Matriz</button>
+    Ingresar dimensión: <input class="input-dimension" id="dimension" type="number" min="3" max="6">
+    <button class="b-resolver" onclick="generarMatriz()">Generar Matriz</button>
 
     <form>
       <div id="matrix"></div>
@@ -30,7 +31,7 @@
             <br>
         </div>
 
-        <div id="tabla">
+        <div id="tabla" class="d-resultado">
 
         </div>
     </div>

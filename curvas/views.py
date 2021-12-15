@@ -1,6 +1,7 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render
 import json
+import math
 # Create your views here.
 
 
@@ -21,20 +22,20 @@ def metodo_minimos_cuadrados(data):
     for i in range(N):
         
         #agregar valores
-        xy.append(data[i][0]*data[i][1])
-        x2.append(data[i][0]*data[i][0])
-        y2.append(data[i][1]*data[i][1])
+        xy.append(round(data[i][0]*data[i][1],4))
+        x2.append(round(data[i][0]*data[i][0],4))
+        y2.append(round(data[i][1]*data[i][1],4))
 
         #sumatorias
         Sx = Sx + data[i][0]
         Sy = Sy + data[i][1]
-        Sxy = Sxy + xy[i]
+        Sxy = round(Sxy + xy[i],4)
         Sx2 = Sx2 + x2[i]
         Sy2 = Sy2 + y2[i]
     
-    m = ((N*Sxy)-(Sx*Sy))/((N*Sx2)-(Sx*Sx))
-    b = ((Sy*Sx2)-(Sx*Sxy))/((N*Sx2)-(Sx*Sx))
-    c = ((N*Sxy)-(Sx*Sy))/((((N*Sx2)-(Sx*Sx))**(1/2))*(((N*Sy2)-(Sy*Sy))**(1/2)))
+    m = round(((N*Sxy)-(Sx*Sy))/((N*Sx2)-(Sx*Sx)),4)
+    b = round(((Sy*Sx2)-(Sx*Sxy))/((N*Sx2)-(Sx*Sx)),4)
+    c = round(((N*Sxy)-(Sx*Sy))/((((N*Sx2)-(Sx*Sx))**(1/2))*(((N*Sy2)-(Sy*Sy))**(1/2))),4)
     funcion = f'y = {m}x + {b}'
 
     context = {
@@ -42,6 +43,16 @@ def metodo_minimos_cuadrados(data):
         "b":b,
         "c":c,
         "funcion":funcion,
+        "puntos":data,
+        "xy":xy,
+        "x2":x2,
+        "y2":y2,
+        "n":N,
+        "sx":Sx,
+        "sy":Sy,
+        "sxy":Sxy,
+        "sx2":Sx2,
+        "sy2":Sy2,
     }
 
     return context

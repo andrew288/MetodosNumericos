@@ -5,12 +5,18 @@ function generarMatriz(){
 
     for(let i=0; i<parseInt(dimension); i++){
         for(let j=0; j<parseInt(dimension)+1; j++){
-            if(j!=dimension){
-                codeHTML+='<input class="indice" type="number" value=2> + ';
+            if(j==dimension){
+                codeHTML+=`<input class="indice" type="number" value=2>`;
             }
             else{
-                codeHTML+='<input class="indice" type="number" value=2>';
+                if(j==(parseInt(dimension)-1)){
+                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number" value=2> = `;
+                }
+                else{
+                    codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number" value=2> + `;
+                }
             }
+            
         }
         codeHTML+="<br>";
     }
@@ -51,7 +57,7 @@ function enviarDatos(){
         solucion = JSON.parse(data)
         console.log(solucion)
         for(let i=0; i< solucion.length;i++){
-            valueHMTL+=`<p>x${i}: ${solucion[i]}</p> <br>`;
+            valueHMTL+=`<p class="p-solucion">x${i}: <span class="s-solucion">${solucion[i]}</span></p>`;
         }
         document.getElementById('tabla').innerHTML = valueHMTL;
     })

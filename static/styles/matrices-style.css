@@ -1,0 +1,39 @@
+.indice{
+    width: 60px;
+    padding: 2px;
+    text-align: center;
+}
+
+.b-resolver{
+    padding: 6px;
+    background-color:#EEEA7E;
+    border-radius: 10px;
+}
+
+.s-variable{
+    font-size: 20px;
+    margin-left: 25px;
+}
+.p-solucion{
+    display: inline;
+    margin-right: 20px;
+}
+.s-solucion{
+    background-color: #FFFFFF;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    border-radius: 5px;
+}
+.d-resultado{
+    margin-top: 30px;
+}
+
+.input-dimension{
+    width: 70px;
+    text-align: center;
+}
+.p-solucion-ajustes{
+    font-size: 20px;
+}

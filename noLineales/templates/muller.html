@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 {% block title %}
-  <title>Método Punto Fijo</title> 
+  <title>Método de Muller</title> 
 {% endblock %}
 {%block body%}
 {% include 'navbar.html' %}
   <div class="cuerpo">
-    <h1>Iteración Punto fijo</h1>
+    <h1>Método de Muller</h1>
     <form action="/Ecuaciones-no-lineales/Muller" method="POST">
       {% csrf_token %}
       <div class="box-input">
