@@ -1,5 +1,6 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render
+from .metodos.GaussSeidel import metodo_gauss_seidel
 from sympy import *
 import numpy as np
 import json
@@ -56,6 +57,12 @@ def gauss_jordan_ajax(request):
      
      return JsonResponse(json.dumps(solucion), safe=False)
 #Vista para gauss seidel
+def gauss_seidel_ajax(request):
+    data = json.loads(request.body)
+    solucion = metodo_gauss_seidel(data)
+
+    return JsonResponse(json.dumps(solucion), safe=False)
+
 def Gauss_seidel(request):
     context = {}
     return render(request, 'gauss-seidel.html', context)

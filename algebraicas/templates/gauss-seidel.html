@@ -17,22 +17,18 @@
   <div class="cuerpo">
     <h1>Método de Gauss Seidel</h1>
 
-    Ingresar dimensión: <input id="dimension" type="number" min="3" max="6">
+    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6">
     <button onclick="generarMatriz()">Generar Matriz</button>
-
+    <label>Error:</label><input id="error" type="number">
+    <label>Decimales:</label><input id="decimales" type="number">
     <form>
       <div id="matrix"></div>
     </form>
-
-    <div class="box-botones">
-        <input class="boton" onclick="mostrarTabla()" type="submit" value="Mostrar solución">
-    </div>
-
     <div class="info">
         <div id="tabla">
         </div>
     </div>
   </div>
     <script src="{% static 'js/method.js' %}"></script>
-    <script src="{% static 'js/generarMatriz.js' %}"></script>
+    <script src="{% static 'js/algebraicas/gauss-seidel.js' %}"></script>
   {% endblock %}
