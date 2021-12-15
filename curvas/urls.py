@@ -7,7 +7,9 @@ from curvas.views import (
     diferencias_divididas_view,
     diferencias_divididas_ajax,
     lagrangeView,
-    lagrangeViewAjax
+    lagrangeViewAjax,
+    diferencias_finitas_view,
+    diferencias_finitas_ajax,
 )
 
 app_name = 'curvas'
@@ -19,5 +21,6 @@ urlpatterns = [
     path('Diferencias_Divididas_Ajax', diferencias_divididas_ajax, name="diferencias_divididas_ajax"),
     path('Lagrange', lagrangeView, name="lagrange"),
     path('LagrangeAjax/', lagrangeViewAjax, name="lagrange-ajax"),
-
+    path('Diferencias_Finitas', diferencias_finitas_view, name="diferencias_finitas"),
+    path('Diferencias_Finitas_Ajax', diferencias_finitas_ajax, name="diferencias_finitas_ajax"),
 ]

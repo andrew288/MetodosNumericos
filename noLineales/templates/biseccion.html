@@ -19,15 +19,22 @@
     <form action="/Ecuaciones-no-lineales/Biseccion" method="POST">    {% csrf_token %}
       <div class="box-input">
         <div class="input">
-          <label>Función f(x): </label><input value="" id="funcionF" type="text" name="inputField" size="30"/>
+          <label>Función f(x): </label><input class="i-funcion" value="{{funcionF}}" id="funcionF" type="text" name="inputField" size="30"/>
         </div>
         <div class="input">
-          <label>Intervalo:[</label><input class="intervalo" id="puntoA" type="number" name="puntoA" step="any">,<input class="intervalo" id="puntoB" type="number" name="puntoB" step="any">]
+          <label>Intervalo:[</label><input value="{{puntoA}}" class="intervalo" id="puntoA" type="number" name="puntoA" step="any">,<input value="{{puntoB}}" class="intervalo" id="puntoB" type="number" name="puntoB" step="any">]
         </div>
         <div class="input">
-          <label>Error:</label><input name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
+          <label>Error:</label><input class="i-error" name="error" type="number" value="0.0001" step="any" min="0.00001" max="0.01">
         </div>
       </div>
+
+      <div class="box-input">
+        <div class="input">
+          <label>Truncate: </label><input class="i-truncate" value="{{truncate}}" id="funcionF" type="text" name="truncate" size="30"/>
+        </div>
+      </div>
+
       <div class="box-botones">
           <button class="boton" onclick="evalInput(document.getElementById('funcionF').value);return false;">Mostrar Grafico</button>
           <input class="boton" onclick="mostrarTabla()" type="submit" value="Mostra tabla">
@@ -48,13 +55,13 @@
                 </thead>
                   {% for i in count %}
                   <tr>
-                    <td>{{ xi|index:i }}</td>
-                    <td>{{ xd|index:i }}</td>
-                    <td>{{ xr|index:i }}</td>
-                    <td>{{ fxi|index:i }}</td>
-                    <td>{{ fxd|index:i }}</td>
-                    <td>{{ fxr|index:i }}</td>
-                    <td>{{ err|index:i }}</td>
+                    <td>{{ xi|index:i|floatformat:truncate }}</td>
+                    <td>{{ xd|index:i|floatformat:truncate }}</td>
+                    <td>{{ xr|index:i|floatformat:truncate }}</td>
+                    <td>{{ fxi|index:i|floatformat:truncate }}</td>
+                    <td>{{ fxd|index:i|floatformat:truncate }}</td>
+                    <td>{{ fxr|index:i|floatformat:truncate }}</td>
+                    <td>{{ err|index:i|floatformat:truncate }}</td>
                   </tr>
                   {% endfor %}
               </table>

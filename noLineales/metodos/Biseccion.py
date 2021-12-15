@@ -60,6 +60,11 @@ def metodo_biseccion(express, puntoA, puntoB, errorEstimado, truncate):
         "fxd":fxd,
         "fxr":fxr,
         "err":err,
+        "funcionF":express,
+        "puntoA":puntoA,
+        "puntoB":puntoB,
+        "error":errorEstimado,
+        "truncate":truncate,
     }
 
     return context

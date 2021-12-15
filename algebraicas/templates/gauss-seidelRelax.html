@@ -18,11 +18,12 @@
   <div class="cuerpo">
     <h1>Método de Gauss Seidel con relajación</h1>
 
-    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6">
-    <button onclick="generarMatriz()">Generar Matriz</button>
-    <label for="error">Error:</label><input id="error" type="number">
-    <label for="decimales">Decimales:</label><input id="decimales" type="number">
-    <label for="peso">Peso:</label><input id="peso" type="number" >
+    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6" class="input-seidel">
+    <button onclick="generarMatriz()" class="b-resolver">Generar Matriz</button>
+    <br>
+    <label for="error">Error:</label><input id="error" type="number" class="input-seidel">
+    <label for="decimales">Decimales:</label><input id="decimales" type="number" class="input-seidel">
+    <label for="peso">Peso:</label><input id="peso" type="number" class="input-seidel">
     <form>
       <div id="matrix"></div>
     </form>

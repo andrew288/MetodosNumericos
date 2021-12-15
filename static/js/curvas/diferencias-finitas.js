@@ -32,7 +32,7 @@ function enviarDatos(){
     }
     console.log(matrix);
     console.log(JSON.stringify(matrix))
-    fetch('/Ajuste-interpolacion/Diferencias_Divididas_Ajax',{
+    fetch('/Ajuste-interpolacion/Diferencias_Finitas_Ajax',{
         method: 'POST',
         body: JSON.stringify(matrix),
         headers:{

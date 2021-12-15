@@ -28,11 +28,11 @@ def metodo_minimos_cuadrados(data):
         y2.append(round(data[i][1]*data[i][1],4))
 
         #sumatorias
-        Sx = Sx + data[i][0]
-        Sy = Sy + data[i][1]
+        Sx = round(Sx + data[i][0],4)
+        Sy = round(Sy + data[i][1],4)
         Sxy = round(Sxy + xy[i],4)
-        Sx2 = Sx2 + x2[i]
-        Sy2 = Sy2 + y2[i]
+        Sx2 = round(Sx2 + x2[i],4)
+        Sy2 = round(Sy2 + y2[i],4)
     
     m = round(((N*Sxy)-(Sx*Sy))/((N*Sx2)-(Sx*Sx)),4)
     b = round(((Sy*Sx2)-(Sx*Sxy))/((N*Sx2)-(Sx*Sx)),4)
@@ -143,6 +143,7 @@ def diferencias_divididas_view(request):
     context = {}
     return render(request, 'diferencias-divididas.html', context=context)
 
+
 def lagrangeViewAjax(request):
     data = json.loads(request.body.decode("utf-8"))
     matriX = data['X']
@@ -156,3 +157,76 @@ def lagrangeView(request):
     context = {}
 
     return render(request, 'lagrange.html', context=context)
+
+
+
+
+def metodo_diferencias_finitas(data):
+    N = len(data)
+
+    xis = []
+    Solucion2 = []
+
+    for i in range(N):
+        xis.append((data[i][0]))
+        Solucion2.append(data[i][1])
+
+    print(Solucion2)
+    print(xis)
+    it = N-1
+    it2 = 0
+    for i in range(N-1):
+        for j in range(it):
+            Solucion2.append((Solucion2[it2+1]-Solucion2[it2]))
+            if j==N-2-i:
+                it2=it2+2
+            else :
+                it2=it2+1
+        it=it-1
+        print('\n')  
+    it = N
+    it2 = 0
+    for i in range(N):
+        for j in range(it):
+            print(Solucion2[it2])
+            it2=it2+1
+            
+        it=it-1
+        print('\n')  
+    
+    strFuncion = f'{Solucion2[0]} + ' 
+    strXs = ""
+    it = N
+    it2 = 1
+    for i in range(N):
+        if i >=1:
+            strXs = strXs + f'(x-{xis[i-1]})'
+        for j in range(it):
+            if j==0 and i>=1:
+                strFuncion =  strFuncion+ f'{Solucion2[it2-1]/((math.factorial(i)*math.pow(xis[j+1]-xis[j],i)))}*{strXs} + '
+            it2=it2+1
+            
+        it=it-1
+ 
+    strFuncion = strFuncion[:-2]
+    context = {
+        "data" : Solucion2,
+        "xis" : xis,
+        "n" : N,
+        "funcion" : strFuncion,
+    }
+    
+    return context
+
+
+def diferencias_finitas_ajax(request):
+    data = json.loads(request.body)
+    print(data)
+    solucion = metodo_diferencias_finitas(data)
+    return JsonResponse(json.dumps(solucion), safe=False)
+
+
+def diferencias_finitas_view(request):
+    context = {}
+    return render(request, 'diferencias-finitas.html', context=context)
+
