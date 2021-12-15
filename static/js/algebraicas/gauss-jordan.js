@@ -14,16 +14,13 @@ function generarMatriz(){
                 }
                 else{
                     codeHTML+=`<span class="s-variable">x${j}:</span> <input class="indice" type="number" value=2> + `;
-                }
+                }            
             }
-            
         }
         codeHTML+="<br>";
     }
-
     // Ahora agregamos el input
     codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
-
     document.getElementById('matrix').innerHTML=codeHTML;
 }
 

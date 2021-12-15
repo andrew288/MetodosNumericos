@@ -6,7 +6,8 @@ from .metodos.PuntoFijo import metodo_punto_fijo
 from .metodos.NewtonRapshon import  metodo_newton_raphson
 from .metodos.Secante import metodo_secante
 from .metodos.Graeffe import metodo_graeffe
-from .metodos.Muller import metodo_muller 
+from .metodos.Muller import metodo_muller
+from .metodos.NewtonRaphsonModificado import metodo_nr_modificado 
 
 def home_view(request):
 
@@ -81,7 +82,8 @@ def newtonRaphson(request):
         #request
         funcion = request.POST["inputField"]
         puntoA =  request.POST["puntoA"]
-        context = metodo_newton_raphson(funcion, puntoA)
+        errorEstimado =  request.POST["errorEstimado"]
+        context = metodo_newton_raphson(funcion, puntoA, errorEstimado)
         
     return render(request, 'newtonRaphson.html', context=context)
 
@@ -95,15 +97,30 @@ def mabiertos(request):
         metodo = request.POST["method"]
         funcion = request.POST["inputField"]
         puntoA =  request.POST["puntoA"]
+        errorEstimado =  request.POST["errorEstimado"]
 
         if metodo == "puntoFijo":
-            context = metodo_punto_fijo(funcion, puntoA)
+            context = metodo_punto_fijo(funcion, puntoA,errorEstimado)
         if metodo == "newtonRaphson":
-            context = metodo_newton_raphson(funcion, puntoA)
+            context = metodo_newton_raphson(funcion, puntoA,errorEstimado)
         if metodo == "secante":
-            context = metodo_secante(funcion, puntoA)
+            context = metodo_secante(funcion, puntoA,errorEstimado)
+        if metodo == "newtonRaphsonModificado":
+            context = metodo_nr_modificado(funcion, puntoA,errorEstimado)
         
     return render(request, 'mabiertos.html', context=context)
+
+#Vista para newtonRaphsonModificado
+def newtonRaphsonModificado(request):
+    context = {}
+    if request.POST:
+        #request
+        funcion = request.POST["inputField"]
+        puntoA =  request.POST["puntoA"]
+        errorEstimado =  request.POST["errorEstimado"]
+        context = metodo_nr_modificado(funcion, puntoA, errorEstimado)
+        
+    return render(request, 'newtonRaphsonModificado.html', context=context)
 
 #Vista para secante
 def secante(request):
@@ -112,7 +129,8 @@ def secante(request):
         #request
         funcion = request.POST["inputField"]
         puntoA =  request.POST["puntoA"]
-        context = metodo_secante(funcion, puntoA)
+        errorEstimado =  request.POST["errorEstimado"]
+        context = metodo_secante(funcion, puntoA, errorEstimado )
     return render(request, 'secante.html', context=context)
 
 #Vista de convencionales
