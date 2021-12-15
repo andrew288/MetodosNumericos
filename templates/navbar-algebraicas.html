@@ -1,0 +1,61 @@
+{% load static %}
+<head>
+    {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/sidebarEstilos.css' %}">
+    {% endblock %}
+</head>
+<img src="{% static 'img/Rayas.png' %}" class="rayasFuera" id="rayitas">
+<nav class="nav retroceder" id="sidebar">
+    <div class="sidebar__boton">
+        <h3>Métodos algebraicos</h3>
+    </div>
+    <ul class="list">
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="../" class="nav__link">Menú Principal</a>
+            </div>
+        </li>
+
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="#" class="nav__link">Métodos directos</a>
+                <img src="{% static 'img/arrow.svg' %}" class="list__arrow">
+            </div>
+
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a href="#" class="nav__link nav__link--inside">Eliminación de Gauss</a>
+                </li>
+
+                <li class="list__inside">
+                    <a href="/Ecuaciones-algebraicas/Gauss_Jordan" class="nav__link nav__link--inside">Gauss Jordan</a>
+                </li>
+            </ul>
+
+        </li>
+
+        <li class="list__item list__item--click">
+            <div class="list__button list__button--click">
+                <a href="#" class="nav__link">Métodos Iterativos</a>
+                <img src="{% static 'img/arrow.svg' %}" class="list__arrow">
+            </div>
+
+            <ul class="list__show">
+                <li class="list__inside">
+                    <a href="/Ecuaciones-algebraicas/Jacobi" class="nav__link nav__link--inside">Método de Jacobi</a>
+                </li>
+
+                <li class="list__inside">
+                    <a href="/Ecuaciones-algebraicas/Gauss_Seidel" class="nav__link nav__link--inside">Gauss seidel</a>
+                </li>
+
+                <li class="list__inside">
+                    <a href="/Ecuaciones-algebraicas/Gauss_Seidel_Relax" class="nav__link nav__link--inside">Gauss seidel con relajación</a>
+                </li>
+            </ul>
+
+        </li>
+    </ul>
+</nav>
+<script src="{% static 'js/sidebar.js' %}"></script>
