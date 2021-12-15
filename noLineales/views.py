@@ -43,7 +43,7 @@ def biseccion(request):
         puntoA =  request.POST["puntoA"]
         puntoB = request.POST.get("puntoB",False)
         error = request.POST["error"]
-        truncate = 0
+        truncate = request.POST["truncate"]
         context = metodo_biseccion(funcionF, puntoA, puntoB, error, truncate)  
     return render(request, 'biseccion.html', context=context)
     
@@ -57,7 +57,8 @@ def falsaPosicion(request):
         puntoA =  request.POST["puntoA"]
         puntoB = request.POST.get("puntoB",False)
         error = request.POST["error"]
-        context =  metodo_posicion_falsa(funcionF, puntoA, puntoB, error)
+        truncate = request.POST["truncate"]
+        context =  metodo_posicion_falsa(funcionF, puntoA, puntoB, error, truncate)
 
     return render(request, 'FalsaPosicion.html', context=context)
 

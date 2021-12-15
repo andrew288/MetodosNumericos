@@ -27,11 +27,11 @@ def metodo_minimos_cuadrados(data):
         y2.append(round(data[i][1]*data[i][1],4))
 
         #sumatorias
-        Sx = Sx + data[i][0]
-        Sy = Sy + data[i][1]
+        Sx = round(Sx + data[i][0],4)
+        Sy = round(Sy + data[i][1],4)
         Sxy = round(Sxy + xy[i],4)
-        Sx2 = Sx2 + x2[i]
-        Sy2 = Sy2 + y2[i]
+        Sx2 = round(Sx2 + x2[i],4)
+        Sy2 = round(Sy2 + y2[i],4)
     
     m = round(((N*Sxy)-(Sx*Sy))/((N*Sx2)-(Sx*Sx)),4)
     b = round(((Sy*Sx2)-(Sx*Sxy))/((N*Sx2)-(Sx*Sx)),4)
