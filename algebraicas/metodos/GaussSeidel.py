@@ -1,5 +1,5 @@
-def metodo_gauss_seidel(data): 
-    a = data.Matrix
+def metodo_gauss_seidel(data, Error): 
+    a = data
     iteraciones = 0
     errores = [100]*len(a)
     valores = [0]*len(a)
@@ -15,7 +15,7 @@ def metodo_gauss_seidel(data):
         contadorErrores=0
         #For donde confirmo que todas las variables tienen un error < 0.001
         for i in range(len(errores)):
-            if errores[i]<data.Error:
+            if errores[i]<float(Error):
                 contadorErrores+=1        
         if contadorErrores==len(a):
             break

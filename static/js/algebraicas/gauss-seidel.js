@@ -45,8 +45,8 @@ function enviarDatos(){
     console.log(matrix);
     console.log(JSON.stringify(matrix))
     let values ={
-        'Matrix':matrix,
-        'Error':error
+        "Matrix":matrix,
+        "Error":error
     }
     console.log( JSON.stringify(values))
     fetch('/Ecuaciones-algebraicas/Gauss_Seidel_Ajax',{
