@@ -1,10 +1,10 @@
 from django.urls import path
-from algebraicas.views import (Gauss_seidel, Gauss_seidelRelax_ajax, Gauss_seidelRelax,
+from algebraicas.views import (Gauss_seidel, Gauss_seidelRelax_ajax, Gauss_seidelRelax, Jacobi, Jacobi_ajax,
     gauss_jordan_ajax,
     gauss_jordan_view,
     gauss_seidel_ajax,
     eliminacion_gauss_view,
-    eliminacion_gauss_ajax
+    eliminacion_gauss_ajax,
     Jacobi,
     Jacobi_ajax,
 )

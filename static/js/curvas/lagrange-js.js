@@ -4,12 +4,12 @@ function generarTabla(){
     let codeHTML="";
 
     for(let i=0; i<parseInt(dimension); i++){
-        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span> [ <input class="indice" type="number" value=2> , <input class="indice1" type="number" value=2> ]`;
+        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span> [ <input class="indice" type="number"> , <input class="indice indice1" type="number"> ]`;
         codeHTML+="<br>";
     }
 
     // Ahora agregamos el input
-    codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
+    codeHTML+='<div class="box-botones"><input class="boton" type="button" onclick="enviarDatos()" value="Mostrar solución"></div>';
 
     document.getElementById('matrix').innerHTML=codeHTML;
 }
