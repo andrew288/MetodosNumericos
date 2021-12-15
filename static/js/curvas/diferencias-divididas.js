@@ -4,12 +4,12 @@ function generarTabla(){
     let codeHTML="";
 
     for(let i=0; i<parseInt(dimension); i++){
-        codeHTML+='[ <input class="punto" type="number" value=2> , <input class="punto" type="number" value=2> ]';
+        codeHTML+='[ <input class="punto indice" type="number"> , <input class="punto indice" type="number"> ]';
         codeHTML+="<br>";
     }
 
     // Ahora agregamos el input
-    codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
+    codeHTML+='<div class="box-botones"><input type="button" class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
 
     document.getElementById('matrix').innerHTML=codeHTML;
 }
@@ -45,7 +45,7 @@ function enviarDatos(){
         solucion = JSON.parse(data)
         console.log(solucion.data)
         
-        valueHMTL+=`<P>Funciooón : </P><br><textarea 
+        valueHMTL+=`<P>Función : </P><br><textarea 
         style="text-align:center; 
             vertical-align: middle;  
             background: #000;
@@ -84,7 +84,7 @@ function enviarDatos(){
             }
             body.appendChild(tbl);
         }
-        valueHMTL+=`<P>Solucion: </P> <br>`
+        valueHMTL+=`<P>Solución: </P> <br>`
         tableCreate();
         
        
