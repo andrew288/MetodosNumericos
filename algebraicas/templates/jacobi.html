@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+<head>
+{% block estilos%}
+<link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+<link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Jacobi</title>
+{% endblock %}
+</head>
+
+{% block body %}
+{% include 'navbar-algebraicas.html' %}
+<div class="cuerpo">
+    <h1>Método de Jacobi</h1>
+
+    <label>Ingresar dimensión: </label><input id="dimension" type="number" min="3" max="6" class="input-seidel">
+    <button onclick="generarMatriz()" class="b-resolver">Generar Matriz</button>
+    <br>
+    <label>Error:</label><input id="error" type="number" class="input-seidel">
+    <label>Decimales:</label><input id="decimales" type="number" class="input-seidel">
+    <form>
+        <div id="matrix"></div>
+    </form>
+    <div class="info">
+        <div id="tabla">
+        </div>
+    </div>
+</div>
+    <script src="{% static 'js/method.js' %}"></script>
+    <script src="{% static 'js/algebraicas/jacobi.js' %}"></script>
+{% endblock %}

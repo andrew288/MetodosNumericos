@@ -4,7 +4,7 @@ function generarTabla(){
     let codeHTML="";
 
     for(let i=0; i<parseInt(dimension); i++){
-        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span> [ <input class="indice" type="number" value=2> , <input class="indice" type="number" value=2> ]`;
+        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span> [ <input class="indice" type="number"> , <input class="indice" type="number"> ]`;
         codeHTML+="<br>";
     }
 

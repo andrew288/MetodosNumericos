@@ -1,18 +1,19 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from .metodos.GaussSeidel import metodo_gauss_seidel
-
+from .metodos.GaussSeidelRelax import metodo_gauss_seidelRelax
 from .metodos.GaussJordan import metodo_gauss_jordan
+from .metodos.Jacobi import metodo_jacobi
 
 import json
 
 # Create your views here.
 def gauss_jordan_ajax(request):
-     
-     data = json.loads(request.body)
-     solucion = metodo_gauss_jordan(data)
-     
-     return JsonResponse(json.dumps(solucion), safe=False)
+    
+    data = json.loads(request.body)
+    solucion = metodo_gauss_jordan(data)
+    
+    return JsonResponse(json.dumps(solucion), safe=False)
 
 def gauss_jordan_view(request):
     context = {}
@@ -36,4 +37,11 @@ def Gauss_seidelRelax(request):
     context = {}
     return render(request,'gauss-seidelRelax.html',context)
 
+def Jacobi(request):
+    context = {}
+    return render(request, 'jacobi.html', context=context)
 
+def Jacobi_ajax(request):
+    data = json.loads(request.body)
+    solucion = metodo_jacobi(data["Matrix"], data["Error"])
+    return JsonResponse(json.dumps(solucion), safe=False)

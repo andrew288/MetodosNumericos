@@ -3,7 +3,8 @@ from algebraicas.views import (Gauss_seidel, Gauss_seidelRelax_ajax, Gauss_seide
     gauss_jordan_ajax,
     gauss_jordan_view,
     gauss_seidel_ajax,
-
+    Jacobi,
+    Jacobi_ajax,
 )
 
 app_name = 'algebraicas'
@@ -14,5 +15,6 @@ urlpatterns = [
     path('Gauss_Seidel_Ajax', gauss_seidel_ajax, name="gauss_seidel_ajax"),
     path('Gauss_Seidel_Relax',Gauss_seidelRelax,name="Gauss_seidelRelax"),
     path('Gauss_SeidelRelax_Ajax',Gauss_seidelRelax_ajax,name="Gauss_seidelRelax_ajax"),
-    
+    path('Jacobi', Jacobi, name="Jacobi"),
+    path('Jacobi_Ajax', Jacobi_ajax, name="Jacobi_Ajax"),
 ]

@@ -51,7 +51,7 @@ function enviarDatos(){
         "Error":error
     }
     console.log( JSON.stringify(values))
-    fetch('/Ecuaciones-algebraicas/Gauss_Seidel_Ajax',{
+    fetch('/Ecuaciones-algebraicas/Jacobi_Ajax',{
         method: 'POST',
         body: JSON.stringify(values),
         headers:{
