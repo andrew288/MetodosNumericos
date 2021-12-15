@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+<head>
+  {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  {% endblock %}
+
+  {% block title %}
+    <title>Método Bairstow</title>
+  {% endblock %}
+</head>
+
+{% block body %}
+{% include 'navbar-noLineales.html' %}
+  <div class="cuerpo">
+    <h1>Método de Bairstow</h1>
+    <form action="/Ecuaciones-no-lineales/bairstow" method="POST">    {% csrf_token %}
+      <div class="box-input">
+        <div class="input">
+          <label>Función f(x): </label><input id="expresion" type="text" value="{{expresion}}" name="expresion" size="50"/>
+        </div>
+        <div class="input">
+          <label>r :</label><input class="intervalo" id="r" type="number" name="r" ><label>s :</label><input class="intervalo" id="s" type="number"  name="s" >
+        </div>
+        <div class="input">
+          <label>Error:</label><input name="error" type="number"  value="0.001" step="any" min="0.00001" max="0.01">
+        </div>
+      </div>
+      <div class="box-botones">
+          <input class="boton"  type="submit" value="Mostra tabla">
+      </div>
+      <div class="info">
+        <div class="grafica" id="grafica">
+            <div id="applet_container" ></div>
+            <br>
+        </div>
+          <h1></h1>
+        {% if r %}
+         <div class="tabla" id="tabla">
+          <div>
+              <p>Resultado X1 = {{ x1 }} , X2 = {{ x2 }}</p>
+
+              <table class="table table-striped">
+                <thead class="table-dark">
+                  {% for i in head %}
+                  <th>{{ i }}</th>
+                  {% endfor %}
+                </thead>
+                {% for i in count %}
+                  <tr>
+                    <td>{{ r|index:i }}</td>
+                    <td>{{ s|index:i }}</td>
+                    <td>{{ Ar|index:i }}</td>
+                    <td>{{ As|index:i }}</td>
+                    <td>{{ Er|index:i }}</td>
+                    <td>{{ Es|index:i }}</td>
+                  </tr>
+
+                {% endfor %}
+
+              </table>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+    </form>
+  </div>
+      <script src="{% static 'js/method.js' %}"></script>
+      <script type="text/javascript">
+        function evalInput(strInput) {
+          tabla=document.getElementById("tabla")
+          grafica =document.getElementById("grafica")
+          grafica.style.display="flex";
+          tabla.style.display="none";
+          ggbApplet.evalCommand(strInput);
+          return false;
+        }
+      </script>
+  {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load index %}
+<head>
+  {% block estilos%}
+    <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
+  {% endblock %}
+
+  {% block title %}
+    <title>Método de Lagrange</title>
+  {% endblock %}
+</head>
+
+{% block body %}
+{% include 'navbar-curvas.html' %}
+  <div class="cuerpo">
+    <h1>Método de Lagrange</h1>
+
+    Ingresar número de puntos: <input id="puntos" class="input-dimension" type="number" min="3" max="6">
+    <button onclick="generarTabla()" class="b-resolver">Generar tabla</button>
+
+    <form action="">
+      <div id="matrix"></div>
+    </form>
+
+    <div class="info">
+        <div class="grafica" id="grafica">
+            <div id="applet_container" ></div>
+            <br>
+        </div>
+
+        <div id="tabla-solucion" class="tabla">
+
+        </div>
+
+        <div id="resultado" class="d-resultado">
+
+        </div>
+    </div>
+  </div>
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/method.js' %}"></script>
+    <script src="{% static 'js/curvas/lagrange-js.js' %}"></script>
+    <script type="text/javascript">
+    function evalInput(strInput) {
+        tabla=document.getElementById("tabla")
+        grafica =document.getElementById("grafica")
+        grafica.style.display="flex";
+        tabla.style.display="none";
+        ggbApplet.evalCommand(strInput);
+        return false;
+    }
+    </script>
+  {% endblock %}
