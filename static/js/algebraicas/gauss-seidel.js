@@ -19,7 +19,7 @@ function generarMatriz(){
     }
 
     // Ahora agregamos el input
-    codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
+    codeHTML+='<div class="box-botones"><input class="boton" type="button" onclick="enviarDatos()" value="Mostrar solución"></div>';
 
     document.getElementById('matrix').innerHTML=codeHTML;
 }
@@ -28,7 +28,7 @@ function enviarDatos(){
     let matriz = document.getElementsByClassName('indice');
     let dimension = parseInt(document.getElementById('dimension').value);
     let error = document.getElementById('error').value;
-    let Decimales = document.getElementById('decimales');
+    let Decimales = document.getElementById('decimales').value;
     let matrix = []
     let count = 0;
     let solucion;
@@ -58,12 +58,14 @@ function enviarDatos(){
         }
     }).then(res => res.json())
     .then(data =>{
+        console.log(data)
         solucion = JSON.parse(data)
         console.log(solucion)
         //Limitar todos los números a la cantidad de decimales dicha
         for(let i = 0; i < solucion.Variables.length;i++){
-            for(let i = 0 ; i< solucion.Variables[i].length;i++){
-                Variables[i][j]=Variables[i][j].toFixed(Decimales)
+            for(let j = 0 ; j< solucion.Variables[i].length;j++){
+                solucion.Variables[i][j]=solucion.Variables[i][j].toFixed(Decimales)
+                solucion.Errores[i][j] = solucion.Errores[i][j].toFixed(Decimales)
             }
             
         }
