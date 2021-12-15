@@ -6,22 +6,22 @@
     <link rel="stylesheet" href="{% static 'styles/biseccion.css' %}">
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
     <link rel="stylesheet" href="{% static 'styles/matrices-style.css' %}">
-  {% endblock %}
+    {% endblock %}
 
   {% block title %}
-    <title>Método de Lagrange</title>
+    <title>Método de Gauss</title>
   {% endblock %}
 </head>
 
 {% block body %}
-{% include 'navbar-curvas.html' %}
+{% include 'navbar-algebraicas.html' %}
   <div class="cuerpo">
-    <h1>Método de Lagrange</h1>
+    <h1>Método de Gauss</h1>
 
-    Ingresar número de puntos: <input id="puntos" class="input-dimension" type="number" min="3" max="6">
-    <button onclick="generarTabla()" class="b-resolver">Generar tabla</button>
+    Ingresar dimensión: <input class="input-dimension" id="dimension" type="number" min="3" max="6">
+    <button class="b-resolver" onclick="generarMatriz()">Generar Matriz</button>
 
-    <form action="">
+    <form>
       <div id="matrix"></div>
     </form>
 
@@ -31,11 +31,7 @@
             <br>
         </div>
 
-        <div id="tabla-solucion" class="tabla">
-
-        </div>
-
-        <div id="resultado" class="d-resultado">
+        <div id="tabla" class="d-resultado">
 
         </div>
     </div>
@@ -43,7 +39,7 @@
 
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/method.js' %}"></script>
-    <script src="{% static 'js/curvas/lagrange-js.js' %}"></script>
+    <script src="{% static 'js/algebraicas/gauss.js' %}"></script>
     <script type="text/javascript">
     function evalInput(strInput) {
         tabla=document.getElementById("tabla")

@@ -1,6 +1,7 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render
 import json
+from .metodos.lagrange import lagrange
 import math
 # Create your views here.
 
@@ -142,3 +143,16 @@ def diferencias_divididas_view(request):
     context = {}
     return render(request, 'diferencias-divididas.html', context=context)
 
+def lagrangeViewAjax(request):
+    data = json.loads(request.body.decode("utf-8"))
+    matriX = data['X']
+    matriY = data['Y']
+    print(matriX)
+    print(matriY)
+    solucion = lagrange(matriX, matriY)
+    return JsonResponse(solucion, safe=False)
+
+def lagrangeView(request):
+    context = {}
+
+    return render(request, 'lagrange.html', context=context)

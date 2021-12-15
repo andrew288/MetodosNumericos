@@ -13,19 +13,19 @@
 </head>
 
 {% block body %}
-{% include 'navbar.html' %}
+{% include 'navbar-noLineales.html' %}
   <div class="cuerpo">
     <h1>Método de Bairstow</h1>
     <form action="/Ecuaciones-no-lineales/bairstow" method="POST">    {% csrf_token %}
       <div class="box-input">
         <div class="input">
-          <label>Función f(x): </label><input id="expresion" type="text" name="expresion" size="50"/>
+          <label>Función f(x): </label><input id="expresion" type="text" value="{{expresion}}" name="expresion" size="50"/>
         </div>
         <div class="input">
           <label>r :</label><input class="intervalo" id="r" type="number" name="r" ><label>s :</label><input class="intervalo" id="s" type="number"  name="s" >
         </div>
         <div class="input">
-          <label>Error:</label><input name="error" type="number" value="0.001" step="any" min="0.00001" max="0.01">
+          <label>Error:</label><input name="error" type="number"  value="0.001" step="any" min="0.00001" max="0.01">
         </div>
       </div>
       <div class="box-botones">
@@ -36,7 +36,7 @@
             <div id="applet_container" ></div>
             <br>
         </div>
-          <h1>{{ value_error }}</h1>
+          <h1></h1>
         {% if r %}
          <div class="tabla" id="tabla">
           <div>

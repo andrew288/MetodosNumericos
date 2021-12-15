@@ -2,6 +2,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from .metodos.GaussSeidel import metodo_gauss_seidel
 from .metodos.GaussSeidelRelax import metodo_gauss_seidelRelax
+from .metodos.eliminacionGauss import eliminacionGauss
 from sympy import *
 import numpy as np
 import json
@@ -80,4 +81,14 @@ def Gauss_seidelRelax(request):
     context = {}
     return render(request,'gauss-seidelRelax.html',context)
 
+def eliminacion_gauss_view(request):
+    context = {}
+
+    return render(request,'eliminacion-gauss.html', context)
+
+def eliminacion_gauss_ajax(request):
+    data = json.loads(request.body.decode("utf-8"))
+    matriz = data['matriz']
+    solucion = eliminacionGauss(matriz)
+    return JsonResponse(solucion, safe=False)
 

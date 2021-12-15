@@ -169,4 +169,9 @@ def bairstowView(request):
         error = request.POST["error"]
         context = bairstow(expresion, float(error), int(valor_r), int(valor_s))
         context['value_error'] = error
+        context['expresion'] = expresion
+        context['valor_r'] = valor_r
+        context['valor_s'] = valor_s
     return render(request, 'bairstow.html', context=context)
+
+
