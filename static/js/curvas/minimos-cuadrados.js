@@ -1,3 +1,6 @@
+let funcion;
+let puntos;
+
 function generarTabla(){
     let dimension = document.getElementById('puntos').value;
     console.log(dimension);
@@ -22,6 +25,7 @@ function enviarDatos(){
     let solucion;
     let valueHMTL = "";
     let tablaHTML = "";
+    let graficoHTML = "";
     console.log(matriz.length);
     for(let i=0; i<dimension; i++){
         let matrixFila = [];
@@ -32,6 +36,7 @@ function enviarDatos(){
         matrix.push(matrixFila);
     }
     console.log(matrix);
+    puntos = matrix;
     console.log(JSON.stringify(matrix))
     fetch('/Ajuste-interpolacion/Minimos_Cuadrados_Ajax',{
         method: 'POST',
@@ -45,6 +50,7 @@ function enviarDatos(){
         console.log(data);
         solucion = JSON.parse(data)
         console.log(solucion)
+        funcion = solucion.funcion;
         tablaHTML+=`<table class="table table-striped">
                         <thead class="table-dark">
                             <th>#</th>
@@ -84,7 +90,23 @@ function enviarDatos(){
         valueHMTL+=`<p class="p-solucion-ajustes">Pendiente: <span class="s-solucion">${solucion.m}</span></p> <br>`;
         valueHMTL+=`<p class="p-solucion-ajustes">Valor de b: <span class="s-solucion">${solucion.b}</span></p> <br>`;
         valueHMTL+=`<p class="p-solucion-ajustes">Coeficiente de correlación: <span class="s-solucion">${solucion.c}</span></p> <br>`;
-        valueHMTL+=`<P class="p-solucion-ajustes">Función: <span class="s-solucion">${solucion.funcion}</span></P> <br>`
+        valueHMTL+=`<P class="p-solucion-ajustes">Función: <span class="s-solucion">${solucion.funcion}</span></P> <br>`;
+        valueHMTL+=`<button class="boton" onclick="mostrarGrafico()">Mostrar Gráfica</button>`
         document.getElementById('tabla').innerHTML = valueHMTL;
+
     })
+}
+
+function evalInput(strInput) {
+    ggbApplet.evalCommand(strInput);
+    return false;
+  }
+
+function mostrarGrafico(){
+    grafica.style.display="block";
+    console.log("muestragrafica");
+    evalInput(funcion);
+    for(let i=0;puntos.length;i++){
+        evalInput(`(${puntos[i][0]},${puntos[i][1]})`);
+    }
 }
