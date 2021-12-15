@@ -45,7 +45,14 @@ function enviarDatos(){
         solucion = JSON.parse(data)
         console.log(solucion.data)
         
-        valueHMTL+=`<P>Función: ${solucion.funcion}</P> <br>`
+        valueHMTL+=`<P>Funciooón : </P><br><textarea 
+        style="text-align:center; 
+            vertical-align: middle;  
+            background: #000;
+            color: #FFF;
+            font-size : 25px;
+        " 
+        rows="3" cols="100" >P(x) = ${solucion.funcion}</textarea><br>`
 
         function tableCreate() {
             const body = document.body,
