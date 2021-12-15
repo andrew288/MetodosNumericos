@@ -53,11 +53,16 @@ def metodo_gauss_seidel(data, Error):
                 print("error en "+ str(i)+" : "+str(errores[i]))
             Errores.append(tempErrores)
         Variables.append(tempVariables)
-        
+        print("------------------------------------------------------")
+        print("Variables")
+        for i in range(len(Variables)):
+            for j in range(len(Variables[i])):
+                print(Variables[i][j],end=" ")
+            print()
         #Te odio :"v
         print("------------------------") 
     context = {
         "Errores":Errores,
-        "Variables": Variables
+        "Variables": Variables,
     }
     return context

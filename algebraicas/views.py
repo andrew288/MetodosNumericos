@@ -59,7 +59,6 @@ def gauss_jordan_ajax(request):
 #Vista para gauss seidel
 def gauss_seidel_ajax(request):
     data = json.loads(request.body)
-    print(data["Matrix"])
     solucion = metodo_gauss_seidel(data["Matrix"], data["Error"])
 
     return JsonResponse(json.dumps(solucion), safe=False)
