@@ -4,12 +4,12 @@ function generarTabla(){
     let codeHTML="";
 
     for(let i=0; i<parseInt(dimension); i++){
-        codeHTML+='[ <input class="punto" type="number" value=2> , <input class="punto" type="number" value=2> ]';
+        codeHTML+=`<span class="s-variable">Punto ${(i+1)}: </span>[ <input class="punto indice" type="number"> , <input class="punto indice" type="number"> ]`;
         codeHTML+="<br>";
     }
 
     // Ahora agregamos el input
-    codeHTML+='<div class="box-botones"><input class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
+    codeHTML+='<div class="box-botones"><input type="button" class="boton" onclick="enviarDatos()" value="Mostrar solución"></div>';
 
     document.getElementById('matrix').innerHTML=codeHTML;
 }
@@ -45,7 +45,7 @@ function enviarDatos(){
         solucion = JSON.parse(data)
         console.log(solucion.data)
         
-        valueHMTL+=`<P>Funciooón : </P><br><textarea 
+        valueHMTL+=`<P>Función : </P><br><textarea 
         style="text-align:center; 
             vertical-align: middle;  
             background: #000;
@@ -64,30 +64,29 @@ function enviarDatos(){
                 const td = tr.insertCell();
                 td.appendChild(document.createTextNode(`${solucion.xis[i]}`));
             }
-           
+    
             it = solucion.n ;
             it2 = 0;
             for (let i = 0; i < solucion.n; i++) {
-              const tr = tbl.insertRow();
-              for (let j = -1; j <  it; j++) {
-                 const td = tr.insertCell();
-                  if(i == 0 && j ==-1 ){
-                    td.appendChild(document.createTextNode(`Yi`));
-                  }else if(j == -1){
-                    td.appendChild(document.createTextNode(""));
-                  }else{
-                    td.appendChild(document.createTextNode(`${solucion.data[it2]}`));
-                    it2++;
-                  }   
-              }
-              it--;
+                const tr = tbl.insertRow();
+                for (let j = -1; j <  it; j++) {
+                    const td = tr.insertCell();
+                    if(i == 0 && j ==-1 ){
+                        td.appendChild(document.createTextNode(`Yi`));
+                    }else if(j == -1){
+                        td.appendChild(document.createTextNode(""));
+                    }else{
+                        td.appendChild(document.createTextNode(`${solucion.data[it2]}`));
+                        it2++;
+                    }   
+                }
+                it--;
             }
             body.appendChild(tbl);
         }
-        valueHMTL+=`<P>Solucion: </P> <br>`
+        valueHMTL+=`<P>Solución: </P> <br>`
         tableCreate();
         
-       
         document.getElementById('tabla').innerHTML = valueHMTL;
     })
 }

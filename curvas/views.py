@@ -117,7 +117,7 @@ def metodo_diferencias_divididas(data):
             it2=it2+1
             
         it=it-1
- 
+
     strFuncion = strFuncion[:-2]
 
     
@@ -207,7 +207,7 @@ def metodo_diferencias_finitas(data):
             it2=it2+1
             
         it=it-1
- 
+
     strFuncion = strFuncion[:-2]
     context = {
         "data" : Solucion2,
